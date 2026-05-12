@@ -207,6 +207,21 @@ a:hover .cta-arrow, button:hover .cta-arrow {
   [data-rule]::before { transform: scaleX(1); transition: none; }
 }
 
+/* duotone image: dark monochrome, restores to color on hover */
+.duotone {
+  --duotone-filter: grayscale(100%) brightness(0.5) contrast(1.05);
+  filter: var(--duotone-filter);
+  transition: filter 600ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: filter;
+}
+.duotone:hover,
+.group:hover .duotone {
+  filter: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .duotone { transition: none; }
+}
+
 :root {
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);

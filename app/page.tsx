@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import ParticleField from './components/ParticleField';
 import HomeAnimations from './components/HomeAnimations';
 import BorderGlow from './components/BorderGlow';
@@ -116,6 +117,39 @@ export default function Home() {
               <p className="mt-6 text-lg leading-[1.6] text-neutral-400 text-pretty">
                 Headquartered with global ambition and African conviction.
               </p>
+            </div>
+          </div>
+
+          {/* Editorial photo strip */}
+          <div className="group mt-16 sm:mt-20 grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3">
+            <div className="relative aspect-[4/5] sm:aspect-[3/4] overflow-hidden rounded-md sm:col-span-2 sm:aspect-[16/10]">
+              <Image
+                src="https://picsum.photos/seed/divinus-group-1/1600/1000"
+                alt="Divinus across markets"
+                fill
+                sizes="(min-width: 1024px) 60vw, 100vw"
+                className="duotone object-cover"
+              />
+            </div>
+            <div className="grid grid-rows-2 gap-2 sm:gap-3">
+              <div className="relative overflow-hidden rounded-md">
+                <Image
+                  src="https://picsum.photos/seed/divinus-group-2/900/700"
+                  alt="Operational rhythm"
+                  fill
+                  sizes="(min-width: 1024px) 25vw, 50vw"
+                  className="duotone object-cover"
+                />
+              </div>
+              <div className="relative overflow-hidden rounded-md">
+                <Image
+                  src="https://picsum.photos/seed/divinus-group-3/900/700"
+                  alt="Architecture in detail"
+                  fill
+                  sizes="(min-width: 1024px) 25vw, 50vw"
+                  className="duotone object-cover"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -237,18 +271,29 @@ export default function Home() {
               colors={['#fafafa', '#a3a3a3', '#525252']}
               fillOpacity={0.5}
             >
-              <Link href="/communities#men-of-substance" className="group block p-8 sm:p-10">
-                <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">01 / For men</p>
-                <h3 className="mt-5 text-3xl sm:text-4xl font-bold tracking-tight text-neutral-50">Men of Substance</h3>
-                <p className="mt-4 text-sm leading-[1.7] text-neutral-400">
-                  <span className="text-neutral-200">Leadership.</span>{' '}
-                  <span className="text-neutral-200">Discipline.</span>{' '}
-                  <span className="text-neutral-200">Brotherhood.</span>{' '}
-                  <span className="text-neutral-200">Standard.</span>
-                </p>
-                <p className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-neutral-300 group-hover:text-neutral-50 transition">
-                  Explore Men of Substance <span className="transition group-hover:translate-x-1">→</span>
-                </p>
+              <Link href="/communities#men-of-substance" className="group block overflow-hidden rounded-[14px]">
+                <div className="relative aspect-[16/10] w-full overflow-hidden">
+                  <Image
+                    src="https://picsum.photos/seed/divinus-mos/1600/1000"
+                    alt="Men of Substance — community gathering"
+                    fill
+                    sizes="(min-width: 1024px) 40vw, 100vw"
+                    className="duotone object-cover"
+                  />
+                </div>
+                <div className="p-8 sm:p-10">
+                  <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">01 / For men</p>
+                  <h3 className="mt-5 text-3xl sm:text-4xl font-bold tracking-tight text-neutral-50">Men of Substance</h3>
+                  <p className="mt-4 text-sm leading-[1.7] text-neutral-400">
+                    <span className="text-neutral-200">Leadership.</span>{' '}
+                    <span className="text-neutral-200">Discipline.</span>{' '}
+                    <span className="text-neutral-200">Brotherhood.</span>{' '}
+                    <span className="text-neutral-200">Standard.</span>
+                  </p>
+                  <p className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-neutral-300 group-hover:text-neutral-50 transition">
+                    Explore Men of Substance <span className="transition group-hover:translate-x-1">→</span>
+                  </p>
+                </div>
               </Link>
             </BorderGlow>
 
@@ -265,18 +310,29 @@ export default function Home() {
               colors={['#fafafa', '#a3a3a3', '#525252']}
               fillOpacity={0.5}
             >
-              <Link href="/communities#genesis-woman" className="group block p-8 sm:p-10">
-                <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">02 / For women</p>
-                <h3 className="mt-5 text-3xl sm:text-4xl font-bold tracking-tight text-neutral-50">Genesis Woman</h3>
-                <p className="mt-4 text-sm leading-[1.7] text-neutral-400">
-                  <span className="text-neutral-200">Purpose.</span>{' '}
-                  <span className="text-neutral-200">Clarity.</span>{' '}
-                  <span className="text-neutral-200">Excellence.</span>{' '}
-                  <span className="text-neutral-200">Sisterhood.</span>
-                </p>
-                <p className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-neutral-300 group-hover:text-neutral-50 transition">
-                  Explore Genesis Woman <span className="transition group-hover:translate-x-1">→</span>
-                </p>
+              <Link href="/communities#genesis-woman" className="group block overflow-hidden rounded-[14px]">
+                <div className="relative aspect-[16/10] w-full overflow-hidden">
+                  <Image
+                    src="https://picsum.photos/seed/divinus-gw/1600/1000"
+                    alt="Genesis Woman — community gathering"
+                    fill
+                    sizes="(min-width: 1024px) 40vw, 100vw"
+                    className="duotone object-cover"
+                  />
+                </div>
+                <div className="p-8 sm:p-10">
+                  <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">02 / For women</p>
+                  <h3 className="mt-5 text-3xl sm:text-4xl font-bold tracking-tight text-neutral-50">Genesis Woman</h3>
+                  <p className="mt-4 text-sm leading-[1.7] text-neutral-400">
+                    <span className="text-neutral-200">Purpose.</span>{' '}
+                    <span className="text-neutral-200">Clarity.</span>{' '}
+                    <span className="text-neutral-200">Excellence.</span>{' '}
+                    <span className="text-neutral-200">Sisterhood.</span>
+                  </p>
+                  <p className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-neutral-300 group-hover:text-neutral-50 transition">
+                    Explore Genesis Woman <span className="transition group-hover:translate-x-1">→</span>
+                  </p>
+                </div>
               </Link>
             </BorderGlow>
           </div>
@@ -302,15 +358,24 @@ export default function Home() {
                 key={r.intent}
                 href={r.to}
                 data-anim="route-row"
-                className="group relative bg-neutral-950 p-8 lg:p-10 flex flex-col justify-between min-h-[260px] hover:bg-neutral-900/60 transition"
+                className="group relative bg-neutral-950 p-8 lg:p-10 flex flex-col justify-between min-h-[260px] overflow-hidden transition"
               >
-                <div className="flex items-start justify-between">
+                <Image
+                  src={`https://picsum.photos/seed/divinus-route-${r.cta.toLowerCase()}/1200/800`}
+                  alt=""
+                  fill
+                  sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                  className="duotone object-cover opacity-70"
+                  aria-hidden="true"
+                />
+                <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/70 to-neutral-950/40 transition-opacity duration-500 group-hover:opacity-60" />
+                <div className="relative flex items-start justify-between">
                   <span className="text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-500 group-hover:text-neutral-300 transition">
                     {String(i + 1).padStart(2, '0')} / {r.cta}
                   </span>
                   <span className="text-neutral-600 transition group-hover:text-neutral-50 group-hover:translate-x-1">→</span>
                 </div>
-                <div>
+                <div className="relative">
                   <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">I want to</p>
                   <p className="mt-3 text-2xl font-bold tracking-tight text-neutral-50 text-balance">
                     {r.intent.toLowerCase()}.
@@ -324,7 +389,16 @@ export default function Home() {
       </section>
 
       {/* CTA BANNER */}
-      <ParticleField data-fx="gsap" data-section="cta" className="bg-black text-neutral-50" aria-labelledby="cta-title">
+      <ParticleField data-fx="gsap" data-section="cta" className="group bg-black text-neutral-50" aria-labelledby="cta-title">
+        <Image
+          src="https://picsum.photos/seed/divinus-cta/2400/1200"
+          alt=""
+          fill
+          sizes="100vw"
+          className="duotone object-cover opacity-55"
+          aria-hidden="true"
+        />
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/55" />
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 py-36 sm:py-48">
           <div className="grid lg:grid-cols-12 gap-x-12 gap-y-10 items-end">
             <div className="lg:col-span-8">
