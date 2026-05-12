@@ -7,13 +7,13 @@ import Aurora from './components/Aurora';
 import HeroGlobe from './components/HeroGlobe';
 
 const DIVISIONS = [
-  { num: '01', anchor: 'ai',         name: 'Divinus AI · Vision Africa', tag: 'Intelligence',  line: 'African AI capability — built, taught, and deployed where it counts.',     grad: 'linear-gradient(135deg, #0a3550 0%, #50c8ff 100%)' },
-  { num: '02', anchor: 'advisory',   name: 'Divinus Advisory',           tag: 'Strategy',      line: 'Where Strategy Meets Substance. We diagnose before we prescribe.',          grad: 'linear-gradient(135deg, #1f1535 0%, #a855f7 100%)' },
-  { num: '03', anchor: 'exchange',   name: 'Divinus Exchange',           tag: 'Community',     line: 'The platform where substance meets community — Men of Substance and Genesis Woman.', grad: 'linear-gradient(135deg, #3a0e2a 0%, #ec4899 100%)' },
-  { num: '04', anchor: 'labs',       name: 'Divinus Labs',               tag: 'Products',      line: 'Software products and digital systems engineered for African markets.',     grad: 'linear-gradient(135deg, #1a1a1a 0%, #525252 100%)' },
-  { num: '05', anchor: 'capital',    name: 'Divinus Capital',            tag: 'Education',     line: 'Education Before Action. This is not a signals group — it is a school.',    grad: 'linear-gradient(135deg, #3b1f06 0%, #f97316 100%)' },
-  { num: '06', anchor: 'partners',   name: 'Strategic Partners',         tag: 'Alliances',     line: 'Long-horizon partnerships with the institutions building the continent.',   grad: 'linear-gradient(135deg, #1c2a14 0%, #84cc16 100%)' },
-  { num: '07', anchor: 'foundation', name: 'The Divinus Foundation',     tag: 'Impact',        line: 'Where conviction meets contribution — the philanthropic arm of the group.', grad: 'linear-gradient(135deg, #2b1d05 0%, #C9A84C 100%)' },
+  { num: '01', anchor: 'ai',         name: 'Divinus AI · Vision Africa', tag: 'Intelligence',  line: 'African AI capability — built, taught, and deployed where it counts.',     img: 'https://picsum.photos/seed/divinus-div-ai/720/900' },
+  { num: '02', anchor: 'advisory',   name: 'Divinus Advisory',           tag: 'Strategy',      line: 'Where Strategy Meets Substance. We diagnose before we prescribe.',          img: 'https://picsum.photos/seed/divinus-div-advisory/720/900' },
+  { num: '03', anchor: 'exchange',   name: 'Divinus Exchange',           tag: 'Community',     line: 'The platform where substance meets community — Men of Substance and Genesis Woman.', img: 'https://picsum.photos/seed/divinus-div-exchange/720/900' },
+  { num: '04', anchor: 'labs',       name: 'Divinus Labs',               tag: 'Products',      line: 'Software products and digital systems engineered for African markets.',     img: 'https://picsum.photos/seed/divinus-div-labs/720/900' },
+  { num: '05', anchor: 'capital',    name: 'Divinus Capital',            tag: 'Education',     line: 'Education Before Action. This is not a signals group — it is a school.',    img: 'https://picsum.photos/seed/divinus-div-capital/720/900' },
+  { num: '06', anchor: 'partners',   name: 'Strategic Partners',         tag: 'Alliances',     line: 'Long-horizon partnerships with the institutions building the continent.',   img: 'https://picsum.photos/seed/divinus-div-partners/720/900' },
+  { num: '07', anchor: 'foundation', name: 'The Divinus Foundation',     tag: 'Impact',        line: 'Where conviction meets contribution — the philanthropic arm of the group.', img: 'https://picsum.photos/seed/divinus-div-foundation/720/900' },
 ];
 
 const ROUTES = [
@@ -120,38 +120,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Editorial photo strip */}
-          <div className="group mt-16 sm:mt-20 grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3">
-            <div className="relative aspect-[4/5] sm:aspect-[3/4] overflow-hidden rounded-md sm:col-span-2 sm:aspect-[16/10]">
-              <Image
-                src="https://picsum.photos/seed/divinus-group-1/1600/1000"
-                alt="Divinus across markets"
-                fill
-                sizes="(min-width: 1024px) 60vw, 100vw"
-                className="duotone object-cover"
-              />
-            </div>
-            <div className="grid grid-rows-2 gap-2 sm:gap-3">
-              <div className="relative overflow-hidden rounded-md">
-                <Image
-                  src="https://picsum.photos/seed/divinus-group-2/900/700"
-                  alt="Operational rhythm"
-                  fill
-                  sizes="(min-width: 1024px) 25vw, 50vw"
-                  className="duotone object-cover"
-                />
-              </div>
-              <div className="relative overflow-hidden rounded-md">
-                <Image
-                  src="https://picsum.photos/seed/divinus-group-3/900/700"
-                  alt="Architecture in detail"
-                  fill
-                  sizes="(min-width: 1024px) 25vw, 50vw"
-                  className="duotone object-cover"
-                />
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -168,15 +136,24 @@ export default function Home() {
             <div
               key={d.anchor}
               data-preview-tile={d.anchor}
-              className="absolute inset-0 overflow-hidden rounded-xl ring-1 ring-white/10 shadow-2xl"
-              style={{ opacity: i === 0 ? 1 : 0, background: d.grad, willChange: 'opacity' }}
+              className="absolute inset-0 overflow-hidden rounded-xl ring-1 ring-white/10 shadow-2xl bg-neutral-950"
+              style={{ opacity: i === 0 ? 1 : 0, willChange: 'opacity' }}
             >
+              <Image
+                src={d.img}
+                alt=""
+                fill
+                sizes="280px"
+                className="object-cover"
+                aria-hidden="true"
+              />
+              <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/30" />
               <div className="absolute inset-0 flex flex-col justify-between p-6">
-                <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-white/70">
+                <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-white/80">
                   {d.num} / {d.tag}
                 </p>
                 <div>
-                  <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-white/60 mb-2">
+                  <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-white/70 mb-2">
                     Divinus · Division
                   </p>
                   <p className="text-xl font-bold leading-[1.1] tracking-tight text-white">
@@ -184,13 +161,6 @@ export default function Home() {
                   </p>
                 </div>
               </div>
-              <div
-                className="absolute inset-0 mix-blend-overlay"
-                style={{
-                  background:
-                    'radial-gradient(60% 50% at 30% 30%, rgba(255,255,255,0.32), transparent 65%)',
-                }}
-              />
             </div>
           ))}
         </div>
