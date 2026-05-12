@@ -5,12 +5,20 @@ import dynamic from 'next/dynamic';
 import { feature } from 'topojson-client';
 import type { GeometryCollection, Topology } from 'topojson-specification';
 import type { GlobeMethods } from 'react-globe.gl';
+import worldAtlas from '../lib/world-atlas-110m.json';
 
 const Globe = dynamic(() => import('react-globe.gl'), { ssr: false });
 
 type Feature = { type: string; properties: Record<string, unknown>; geometry: unknown };
 
-const COUNTRIES_URL = 'https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json';
+// Decode TopoJSON → GeoJSON once at module load — eliminates a network
+// fetch and a useEffect roundtrip on every visit.
+const COUNTRIES_TOPO = worldAtlas as unknown as Topology;
+const COUNTRIES_FEATURES: Feature[] =
+  (feature(
+    COUNTRIES_TOPO,
+    COUNTRIES_TOPO.objects.countries as GeometryCollection,
+  ) as unknown as { features: Feature[] }).features;
 
 // Baked config (sourced from the dev tuner).
 const BASE_ROTATE_SPEED = -2.6;
@@ -26,21 +34,8 @@ const HEX_COLOR = '#575757';
  * the globe "scrolls with you".
  */
 export default function HeroGlobe() {
-  const [features, setFeatures] = useState<Feature[]>([]);
   const [size, setSize] = useState({ w: 560, h: 560 });
   const globeRef = useRef<GlobeMethods | undefined>(undefined);
-
-  useEffect(() => {
-    fetch(COUNTRIES_URL)
-      .then((r) => r.json())
-      .then((topo: Topology) => {
-        const collection = topo.objects?.countries as GeometryCollection | undefined;
-        if (!collection) return setFeatures([]);
-        const geo = feature(topo, collection) as unknown as { features: Feature[] };
-        setFeatures(geo.features ?? []);
-      })
-      .catch(() => setFeatures([]));
-  }, []);
 
   useEffect(() => {
     const compute = () => {
@@ -97,7 +92,7 @@ export default function HeroGlobe() {
       cancelAnimationFrame(raf);
       window.removeEventListener('scroll', onScroll);
     };
-  }, [features.length]);
+  }, []);
 
   return (
     <div
@@ -122,24 +117,22 @@ export default function HeroGlobe() {
               'linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.55) 22%, #000 50%)',
           }}
         >
-          {features.length > 0 && (
-            <Globe
-              ref={globeRef}
-              width={size.w}
-              height={size.h}
-              backgroundColor="rgba(0,0,0,0)"
-              showAtmosphere={false}
-              atmosphereColor="#5c27be"
-              atmosphereAltitude={0.18}
-              showGlobe
-              hexPolygonsData={features}
-              hexPolygonResolution={3}
-              hexPolygonMargin={0.3}
-              hexPolygonAltitude={0}
-              hexPolygonUseDots
-              hexPolygonColor={() => HEX_COLOR}
-            />
-          )}
+          <Globe
+            ref={globeRef}
+            width={size.w}
+            height={size.h}
+            backgroundColor="rgba(0,0,0,0)"
+            showAtmosphere={false}
+            atmosphereColor="#5c27be"
+            atmosphereAltitude={0.18}
+            showGlobe
+            hexPolygonsData={COUNTRIES_FEATURES}
+            hexPolygonResolution={3}
+            hexPolygonMargin={0.3}
+            hexPolygonAltitude={0}
+            hexPolygonUseDots
+            hexPolygonColor={() => HEX_COLOR}
+          />
         </div>
       </div>
     </div>
