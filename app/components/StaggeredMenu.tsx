@@ -10,6 +10,7 @@ import React, {
   useState,
 } from 'react';
 import { gsap } from 'gsap';
+import { usePathname } from 'next/navigation';
 import './StaggeredMenu.css';
 
 export type StaggeredMenuItem = {
@@ -62,6 +63,12 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
   onMenuOpen,
   onMenuClose,
 }) => {
+  const pathname = usePathname();
+  const isActiveLink = (link: string) => {
+    if (!pathname || !link) return false;
+    if (link === '/') return pathname === '/';
+    return pathname === link || pathname.startsWith(link + '/');
+  };
   const [open, setOpen] = useState(false);
   const openRef = useRef(false);
   const panelRef = useRef<HTMLElement>(null);
@@ -450,6 +457,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
                     className="sm-panel-item"
                     href={it.link}
                     aria-label={it.ariaLabel ?? it.label}
+                    aria-current={isActiveLink(it.link) ? 'page' : undefined}
                     data-index={idx + 1}
                     onClick={() => closeMenu()}
                   >

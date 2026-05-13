@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import ParticleField from './components/ParticleField';
 import HomeAnimations from './components/HomeAnimations';
 import BorderGlow from './components/BorderGlow';
@@ -6,13 +7,13 @@ import Aurora from './components/Aurora';
 import HeroGlobe from './components/HeroGlobe';
 
 const DIVISIONS = [
-  { num: '01', anchor: 'ai',         name: 'Divinus AI · Vision Africa', tag: 'Intelligence',  line: 'African AI capability — built, taught, and deployed where it counts.',     grad: 'linear-gradient(135deg, #0a3550 0%, #50c8ff 100%)' },
-  { num: '02', anchor: 'advisory',   name: 'Divinus Advisory',           tag: 'Strategy',      line: 'Where Strategy Meets Substance. We diagnose before we prescribe.',          grad: 'linear-gradient(135deg, #1f1535 0%, #a855f7 100%)' },
-  { num: '03', anchor: 'exchange',   name: 'Divinus Exchange',           tag: 'Community',     line: 'The platform where substance meets community — Men of Substance and Genesis Woman.', grad: 'linear-gradient(135deg, #3a0e2a 0%, #ec4899 100%)' },
-  { num: '04', anchor: 'labs',       name: 'Divinus Labs',               tag: 'Products',      line: 'Software products and digital systems engineered for African markets.',     grad: 'linear-gradient(135deg, #1a1a1a 0%, #525252 100%)' },
-  { num: '05', anchor: 'capital',    name: 'Divinus Capital',            tag: 'Education',     line: 'Education Before Action. This is not a signals group — it is a school.',    grad: 'linear-gradient(135deg, #3b1f06 0%, #f97316 100%)' },
-  { num: '06', anchor: 'partners',   name: 'Strategic Partners',         tag: 'Alliances',     line: 'Long-horizon partnerships with the institutions building the continent.',   grad: 'linear-gradient(135deg, #1c2a14 0%, #84cc16 100%)' },
-  { num: '07', anchor: 'foundation', name: 'The Divinus Foundation',     tag: 'Impact',        line: 'Where conviction meets contribution — the philanthropic arm of the group.', grad: 'linear-gradient(135deg, #2b1d05 0%, #C9A84C 100%)' },
+  { num: '01', anchor: 'ai',         name: 'Divinus AI · Vision Africa', tag: 'Intelligence',  line: 'African AI capability — built, taught, and deployed where it counts.',     img: 'https://picsum.photos/seed/divinus-div-ai/720/900' },
+  { num: '02', anchor: 'advisory',   name: 'Divinus Advisory',           tag: 'Strategy',      line: 'Where Strategy Meets Substance. We diagnose before we prescribe.',          img: 'https://picsum.photos/seed/divinus-div-advisory/720/900' },
+  { num: '03', anchor: 'exchange',   name: 'Divinus Exchange',           tag: 'Community',     line: 'The platform where substance meets community — Men of Substance and Genesis Woman.', img: 'https://picsum.photos/seed/divinus-div-exchange/720/900' },
+  { num: '04', anchor: 'labs',       name: 'Divinus Labs',               tag: 'Products',      line: 'Software products and digital systems engineered for African markets.',     img: 'https://picsum.photos/seed/divinus-div-labs/720/900' },
+  { num: '05', anchor: 'capital',    name: 'Divinus Capital',            tag: 'Education',     line: 'Education Before Action. This is not a signals group — it is a school.',    img: 'https://picsum.photos/seed/divinus-div-capital/720/900' },
+  { num: '06', anchor: 'partners',   name: 'Strategic Partners',         tag: 'Alliances',     line: 'Long-horizon partnerships with the institutions building the continent.',   img: 'https://picsum.photos/seed/divinus-div-partners/720/900' },
+  { num: '07', anchor: 'foundation', name: 'The Divinus Foundation',     tag: 'Impact',        line: 'Where conviction meets contribution — the philanthropic arm of the group.', img: 'https://picsum.photos/seed/divinus-div-foundation/720/900' },
 ];
 
 const ROUTES = [
@@ -118,6 +119,7 @@ export default function Home() {
               </p>
             </div>
           </div>
+
         </div>
       </section>
 
@@ -134,15 +136,24 @@ export default function Home() {
             <div
               key={d.anchor}
               data-preview-tile={d.anchor}
-              className="absolute inset-0 overflow-hidden rounded-xl ring-1 ring-white/10 shadow-2xl"
-              style={{ opacity: i === 0 ? 1 : 0, background: d.grad, willChange: 'opacity' }}
+              className="absolute inset-0 overflow-hidden rounded-xl ring-1 ring-white/10 shadow-2xl bg-neutral-950"
+              style={{ opacity: i === 0 ? 1 : 0, willChange: 'opacity' }}
             >
+              <Image
+                src={d.img}
+                alt=""
+                fill
+                sizes="280px"
+                className="object-cover"
+                aria-hidden="true"
+              />
+              <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/30" />
               <div className="absolute inset-0 flex flex-col justify-between p-6">
-                <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-white/70">
+                <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-white/80">
                   {d.num} / {d.tag}
                 </p>
                 <div>
-                  <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-white/60 mb-2">
+                  <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-white/70 mb-2">
                     Divinus · Division
                   </p>
                   <p className="text-xl font-bold leading-[1.1] tracking-tight text-white">
@@ -150,13 +161,6 @@ export default function Home() {
                   </p>
                 </div>
               </div>
-              <div
-                className="absolute inset-0 mix-blend-overlay"
-                style={{
-                  background:
-                    'radial-gradient(60% 50% at 30% 30%, rgba(255,255,255,0.32), transparent 65%)',
-                }}
-              />
             </div>
           ))}
         </div>
@@ -226,57 +230,83 @@ export default function Home() {
           <div className="mt-14 grid md:grid-cols-2 gap-6">
             <BorderGlow
               data-anim="comm-card"
-              edgeSensitivity={9}
+              edgeSensitivity={45}
               glowColor="0 0 100"
               backgroundColor="#0a0a0a"
               borderRadius={14}
-              glowRadius={7}
-              glowIntensity={0.2}
-              coneSpread={6}
+              glowRadius={36}
+              glowIntensity={1.0}
+              coneSpread={40}
               animated={false}
               colors={['#fafafa', '#a3a3a3', '#525252']}
               fillOpacity={0.5}
             >
-              <Link href="/communities#men-of-substance" className="group block p-8 sm:p-10">
-                <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">01 / For men</p>
-                <h3 className="mt-5 text-3xl sm:text-4xl font-bold tracking-tight text-neutral-50">Men of Substance</h3>
-                <p className="mt-4 text-sm leading-[1.7] text-neutral-400">
-                  <span className="text-neutral-200">Leadership.</span>{' '}
-                  <span className="text-neutral-200">Discipline.</span>{' '}
-                  <span className="text-neutral-200">Brotherhood.</span>{' '}
-                  <span className="text-neutral-200">Standard.</span>
-                </p>
-                <p className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-neutral-300 group-hover:text-neutral-50 transition">
-                  Explore Men of Substance <span className="transition group-hover:translate-x-1">→</span>
-                </p>
+              <Link href="/communities#men-of-substance" className="group block p-[2px] rounded-[14px]">
+                <div className="overflow-hidden rounded-[12px]">
+                  <div className="relative aspect-[16/10] w-full">
+                    <Image
+                      src="https://picsum.photos/seed/divinus-mos/1600/1000"
+                      alt="Men of Substance — community gathering"
+                      fill
+                      sizes="(min-width: 1024px) 40vw, 100vw"
+                      className="duotone object-cover"
+                    />
+                  </div>
+                  <div className="p-8 sm:p-10">
+                    <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">01 / For men</p>
+                    <h3 className="mt-5 text-3xl sm:text-4xl font-bold tracking-tight text-neutral-50">Men of Substance</h3>
+                    <p className="mt-4 text-sm leading-[1.7] text-neutral-400">
+                      <span className="text-neutral-200">Leadership.</span>{' '}
+                      <span className="text-neutral-200">Discipline.</span>{' '}
+                      <span className="text-neutral-200">Brotherhood.</span>{' '}
+                      <span className="text-neutral-200">Standard.</span>
+                    </p>
+                    <p className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-neutral-300 group-hover:text-neutral-50 transition">
+                      Explore Men of Substance <span className="transition group-hover:translate-x-1">→</span>
+                    </p>
+                  </div>
+                </div>
               </Link>
             </BorderGlow>
 
             <BorderGlow
               data-anim="comm-card"
-              edgeSensitivity={9}
+              edgeSensitivity={45}
               glowColor="0 0 100"
               backgroundColor="#0a0a0a"
               borderRadius={14}
-              glowRadius={7}
-              glowIntensity={0.2}
-              coneSpread={6}
+              glowRadius={36}
+              glowIntensity={1.0}
+              coneSpread={40}
               animated={false}
               colors={['#fafafa', '#a3a3a3', '#525252']}
               fillOpacity={0.5}
             >
-              <Link href="/communities#genesis-woman" className="group block p-8 sm:p-10">
-                <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">02 / For women</p>
-                <h3 className="mt-5 text-3xl sm:text-4xl font-bold tracking-tight text-neutral-50">Genesis Woman</h3>
-                <p className="mt-4 text-sm leading-[1.7] text-neutral-400">
-                  <span className="text-neutral-200">Purpose.</span>{' '}
-                  <span className="text-neutral-200">Clarity.</span>{' '}
-                  <span className="text-neutral-200">Excellence.</span>{' '}
-                  <span className="text-neutral-200">Sisterhood.</span>
-                </p>
-                <p className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-neutral-300 group-hover:text-neutral-50 transition">
-                  Explore Genesis Woman <span className="transition group-hover:translate-x-1">→</span>
-                </p>
+              <Link href="/communities#genesis-woman" className="group block p-[2px] rounded-[14px]">
+                <div className="overflow-hidden rounded-[12px]">
+                  <div className="relative aspect-[16/10] w-full">
+                    <Image
+                      src="https://picsum.photos/seed/divinus-gw/1600/1000"
+                      alt="Genesis Woman — community gathering"
+                      fill
+                      sizes="(min-width: 1024px) 40vw, 100vw"
+                      className="duotone object-cover"
+                    />
+                  </div>
+                  <div className="p-8 sm:p-10">
+                    <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">02 / For women</p>
+                    <h3 className="mt-5 text-3xl sm:text-4xl font-bold tracking-tight text-neutral-50">Genesis Woman</h3>
+                    <p className="mt-4 text-sm leading-[1.7] text-neutral-400">
+                      <span className="text-neutral-200">Purpose.</span>{' '}
+                      <span className="text-neutral-200">Clarity.</span>{' '}
+                      <span className="text-neutral-200">Excellence.</span>{' '}
+                      <span className="text-neutral-200">Sisterhood.</span>
+                    </p>
+                    <p className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-neutral-300 group-hover:text-neutral-50 transition">
+                      Explore Genesis Woman <span className="transition group-hover:translate-x-1">→</span>
+                    </p>
+                  </div>
+                </div>
               </Link>
             </BorderGlow>
           </div>
@@ -302,15 +332,24 @@ export default function Home() {
                 key={r.intent}
                 href={r.to}
                 data-anim="route-row"
-                className="group relative bg-neutral-950 p-8 lg:p-10 flex flex-col justify-between min-h-[260px] hover:bg-neutral-900/60 transition"
+                className="group relative bg-neutral-950 p-8 lg:p-10 flex flex-col justify-between min-h-[260px] overflow-hidden transition"
               >
-                <div className="flex items-start justify-between">
+                <Image
+                  src={`https://picsum.photos/seed/divinus-route-${r.cta.toLowerCase()}/1200/800`}
+                  alt=""
+                  fill
+                  sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                  className="duotone object-cover opacity-70"
+                  aria-hidden="true"
+                />
+                <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/70 to-neutral-950/40 transition-opacity duration-500 group-hover:opacity-60" />
+                <div className="relative flex items-start justify-between">
                   <span className="text-[11px] font-mono uppercase tracking-[0.22em] text-neutral-500 group-hover:text-neutral-300 transition">
                     {String(i + 1).padStart(2, '0')} / {r.cta}
                   </span>
                   <span className="text-neutral-600 transition group-hover:text-neutral-50 group-hover:translate-x-1">→</span>
                 </div>
-                <div>
+                <div className="relative">
                   <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">I want to</p>
                   <p className="mt-3 text-2xl font-bold tracking-tight text-neutral-50 text-balance">
                     {r.intent.toLowerCase()}.
@@ -324,7 +363,16 @@ export default function Home() {
       </section>
 
       {/* CTA BANNER */}
-      <ParticleField data-fx="gsap" data-section="cta" className="bg-black text-neutral-50" aria-labelledby="cta-title">
+      <ParticleField data-fx="gsap" data-section="cta" className="group bg-black text-neutral-50" aria-labelledby="cta-title">
+        <Image
+          src="https://picsum.photos/seed/divinus-cta/2400/1200"
+          alt=""
+          fill
+          sizes="100vw"
+          className="duotone object-cover opacity-55"
+          aria-hidden="true"
+        />
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/55" />
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 py-36 sm:py-48">
           <div className="grid lg:grid-cols-12 gap-x-12 gap-y-10 items-end">
             <div className="lg:col-span-8">

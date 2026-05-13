@@ -1,6 +1,9 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import ParticleField from '../components/ParticleField';
 import PageHeadlines from '../components/PageHeadlines';
+import ShrinkOnScroll from '../components/ShrinkOnScroll';
+import ExpandOnScroll from '../components/ExpandOnScroll';
 
 export const metadata = {
   title: 'Communities — Divinus Exchange',
@@ -16,6 +19,7 @@ type Community = {
   pillars: { name: string; line: string }[];
   audience: string[];
   route: string;
+  img: string;
 };
 
 const COMMUNITIES: Community[] = [
@@ -39,6 +43,7 @@ const COMMUNITIES: Community[] = [
       'Men who would rather sharpen than perform',
     ],
     route: '/contact?route=men-of-substance',
+    img: 'https://picsum.photos/seed/divinus-mos-large/1400/1000',
   },
   {
     id: 'genesis-woman',
@@ -60,16 +65,17 @@ const COMMUNITIES: Community[] = [
       'Women who want a circle, not an audience',
     ],
     route: '/contact?route=genesis-woman',
+    img: 'https://picsum.photos/seed/divinus-gw-large/1400/1000',
   },
 ];
 
 const MEMBER_EXPERIENCE = [
-  { title: 'Programmes', body: 'Structured cohort programmes built around the four pillars of each community — leadership, financial intelligence, brotherhood/sisterhood, and personal standard.' },
-  { title: 'Convenings', body: 'In-person retreats, dinners, and forums where the work happens face-to-face and the relationships compound.' },
-  { title: 'Mentorship', body: 'Curated access to operators, leaders, and elders — not as panellists, but as relationships you can return to.' },
-  { title: 'Capital education', body: 'Priority access to Divinus Capital programmes — markets, personal finance, and capital design.' },
-  { title: 'Cross-community access', body: 'Members of one community meet the other inside Divinus Exchange — partners, peers, and counterparts in the work of building.' },
-  { title: 'Continuity', body: 'Membership is built to last decades, not seasons. The standard does not graduate.' },
+  { title: 'Programmes',             body: 'Structured cohort programmes built around the four pillars of each community — leadership, financial intelligence, brotherhood/sisterhood, and personal standard.', img: 'https://picsum.photos/seed/divinus-exp-programmes/800/600' },
+  { title: 'Convenings',             body: 'In-person retreats, dinners, and forums where the work happens face-to-face and the relationships compound.',                                            img: 'https://picsum.photos/seed/divinus-exp-convenings/800/600' },
+  { title: 'Mentorship',             body: 'Curated access to operators, leaders, and elders — not as panellists, but as relationships you can return to.',                                        img: 'https://picsum.photos/seed/divinus-exp-mentorship/800/600' },
+  { title: 'Capital education',      body: 'Priority access to Divinus Capital programmes — markets, personal finance, and capital design.',                                                       img: 'https://picsum.photos/seed/divinus-exp-capital/800/600' },
+  { title: 'Cross-community access', body: 'Members of one community meet the other inside Divinus Exchange — partners, peers, and counterparts in the work of building.',                         img: 'https://picsum.photos/seed/divinus-exp-cross/800/600' },
+  { title: 'Continuity',             body: 'Membership is built to last decades, not seasons. The standard does not graduate.',                                                                    img: 'https://picsum.photos/seed/divinus-exp-continuity/800/600' },
 ];
 
 export default function CommunitiesPage() {
@@ -77,15 +83,26 @@ export default function CommunitiesPage() {
     <main>
       <PageHeadlines />
 
-      {/* PAGE HEADER */}
-      <section data-fx="gsap" data-section="comm-header" data-above-fold className="relative overflow-hidden" aria-labelledby="comm-title">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-20 pb-12 sm:pt-28 sm:pb-16 lg:pt-32 lg:pb-20">
-          <p data-anim="eyebrow" className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">Communities · Divinus Exchange</p>
+      {/* PAGE HEADER — full-bleed cinematic */}
+      <section data-fx="gsap" data-section="comm-header" data-above-fold className="group relative overflow-hidden min-h-[88vh] flex items-end" aria-labelledby="comm-title">
+        <Image
+          src="https://picsum.photos/seed/divinus-comm-hero-full/2400/1600"
+          alt=""
+          fill
+          sizes="100vw"
+          priority
+          className="duotone object-cover"
+          aria-hidden="true"
+        />
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-black/30" />
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent" />
+        <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 pt-32 pb-20 sm:pb-28 w-full">
+          <p data-anim="eyebrow" className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-300">Communities · Divinus Exchange</p>
           <h1 id="comm-title" className="mt-8 max-w-[18ch] text-[clamp(44px,7vw,108px)] font-bold display-tight text-neutral-50 text-balance">
             <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">Where substance</span></span>
-            <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block text-neutral-500">meets community.</span></span>
+            <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block text-neutral-400">meets community.</span></span>
           </h1>
-          <p className="mt-10 max-w-2xl text-lg sm:text-xl leading-[1.55] text-neutral-400 text-pretty">
+          <p className="mt-10 max-w-2xl text-lg sm:text-xl leading-[1.55] text-neutral-200 text-pretty">
             Divinus Exchange is the consumer platform of the group — the place
             individuals meet Divinus directly. Two communities live here, distinct
             in voice and united in standard.
@@ -93,10 +110,19 @@ export default function CommunitiesPage() {
         </div>
       </section>
 
-      {/* PLATFORM OVERVIEW */}
+      {/* PLATFORM OVERVIEW — wide image header, contracts on scroll */}
       <section data-fx="gsap" data-section="platform" className="border-t border-neutral-800 py-20 sm:py-28" aria-labelledby="platform-title">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid lg:grid-cols-12 gap-x-12 gap-y-10 items-start">
+          <ShrinkOnScroll className="group relative aspect-[21/8] overflow-hidden">
+            <Image
+              src="https://picsum.photos/seed/divinus-platform-wide/2400/914"
+              alt="The Exchange"
+              fill
+              sizes="100vw"
+              className="duotone object-cover"
+            />
+          </ShrinkOnScroll>
+          <div className="mt-14 grid lg:grid-cols-12 gap-x-12 gap-y-10 items-start">
             <div className="lg:col-span-5">
               <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">The platform</p>
               <h2 id="platform-title" className="mt-6 text-[clamp(30px,4.4vw,56px)] font-bold display-tight text-neutral-50 text-balance">
@@ -132,6 +158,15 @@ export default function CommunitiesPage() {
           aria-labelledby={`${c.id}-title`}
         >
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="group relative aspect-[16/8] overflow-hidden rounded-md mb-14 sm:mb-16">
+              <Image
+                src={c.img}
+                alt={c.name}
+                fill
+                sizes="100vw"
+                className="duotone object-cover"
+              />
+            </div>
             <div className="grid lg:grid-cols-12 gap-x-12 gap-y-12 items-start">
               <div className="lg:col-span-5">
                 <p className="text-xs font-mono uppercase tracking-[0.16em] text-neutral-500">{c.eyebrow}</p>
@@ -220,14 +255,25 @@ export default function CommunitiesPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-neutral-800 border border-neutral-800">
             {MEMBER_EXPERIENCE.map((m, i) => (
-              <article key={m.title} className="bg-neutral-950 p-8 sm:p-10 transition-colors duration-300 hover:bg-neutral-900/60">
-                <p className="text-xs font-mono uppercase tracking-[0.16em] text-neutral-500">
-                  {String(i + 1).padStart(2, '0')}
-                </p>
-                <h3 className="mt-5 text-xl sm:text-2xl font-bold tracking-tight text-neutral-50">
-                  {m.title}
-                </h3>
-                <p className="mt-4 text-sm leading-[1.7] text-neutral-400 text-pretty">{m.body}</p>
+              <article key={m.title} className="group relative bg-neutral-950 p-8 sm:p-10 overflow-hidden min-h-[300px]">
+                <Image
+                  src={m.img}
+                  alt=""
+                  fill
+                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                  className="duotone object-cover opacity-65"
+                  aria-hidden="true"
+                />
+                <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/85 to-neutral-950/50 transition-opacity duration-500 group-hover:opacity-70" />
+                <div className="relative">
+                  <p className="text-xs font-mono uppercase tracking-[0.16em] text-neutral-500">
+                    {String(i + 1).padStart(2, '0')}
+                  </p>
+                  <h3 className="mt-5 text-xl sm:text-2xl font-bold tracking-tight text-neutral-50">
+                    {m.title}
+                  </h3>
+                  <p className="mt-4 text-sm leading-[1.7] text-neutral-300 text-pretty">{m.body}</p>
+                </div>
               </article>
             ))}
           </div>
@@ -237,6 +283,15 @@ export default function CommunitiesPage() {
       {/* CROSS-LINK TO CAPITAL */}
       <section data-fx="gsap" data-section="capital-bridge" className="py-20 sm:py-28" aria-labelledby="capital-link">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <ExpandOnScroll className="group relative aspect-[16/6] overflow-hidden mb-14">
+            <Image
+              src="https://picsum.photos/seed/divinus-comm-capital/1600/600"
+              alt="Bridge to Divinus Capital"
+              fill
+              sizes="100vw"
+              className="duotone object-cover"
+            />
+          </ExpandOnScroll>
           <div className="grid lg:grid-cols-12 gap-x-12 gap-y-10 items-end border-t border-neutral-800 pt-16 sm:pt-20">
             <div className="lg:col-span-7">
               <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">A bridge to Capital</p>
@@ -266,7 +321,16 @@ export default function CommunitiesPage() {
       </section>
 
       {/* CTA */}
-      <ParticleField data-fx="gsap" data-section="cta" className="bg-black text-neutral-50 border-t border-neutral-900" aria-labelledby="cta-title">
+      <ParticleField data-fx="gsap" data-section="cta" className="group bg-black text-neutral-50 border-t border-neutral-900" aria-labelledby="cta-title">
+        <Image
+          src="https://picsum.photos/seed/divinus-comm-cta/2400/1200"
+          alt=""
+          fill
+          sizes="100vw"
+          className="duotone object-cover opacity-55"
+          aria-hidden="true"
+        />
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/55" />
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 py-32 sm:py-44">
           <div className="grid lg:grid-cols-12 gap-x-12 gap-y-10 items-end">
             <div className="lg:col-span-8">

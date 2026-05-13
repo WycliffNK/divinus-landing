@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import ParticleField from '../components/ParticleField';
 import PageHeadlines from '../components/PageHeadlines';
 
@@ -9,20 +10,27 @@ export const metadata = {
 };
 
 const ARCHITECTURE = [
-  { num: '01', name: 'Divinus AI · Vision Africa', mandate: 'Build, teach, and deploy African AI capability — for the institutions, businesses, and governments shaping the continent.' },
-  { num: '02', name: 'Divinus Advisory',           mandate: 'Where Strategy Meets Substance. We diagnose before we prescribe — and stay until the work has taken root.' },
-  { num: '03', name: 'Divinus Exchange',           mandate: 'The platform where substance meets community. Home of Men of Substance and Genesis Woman.' },
-  { num: '04', name: 'Divinus Labs',               mandate: 'Software products and digital systems engineered for African markets, built to be owned, not rented.' },
-  { num: '05', name: 'Divinus Capital',            mandate: 'Education Before Action. A financial education division — not a signals group, not advisory, a school.' },
-  { num: '06', name: 'Strategic Partners',         mandate: 'Long-horizon partnerships with the institutions building the continent — public, private, and philanthropic.' },
-  { num: '07', name: 'The Divinus Foundation',     mandate: 'The philanthropic arm of the group — where conviction meets contribution.' },
+  { num: '01', name: 'Divinus AI · Vision Africa', mandate: 'Build, teach, and deploy African AI capability — for the institutions, businesses, and governments shaping the continent.', img: 'https://picsum.photos/seed/divinus-about-ai/600/400' },
+  { num: '02', name: 'Divinus Advisory',           mandate: 'Where Strategy Meets Substance. We diagnose before we prescribe — and stay until the work has taken root.',               img: 'https://picsum.photos/seed/divinus-about-advisory/600/400' },
+  { num: '03', name: 'Divinus Exchange',           mandate: 'The platform where substance meets community. Home of Men of Substance and Genesis Woman.',                              img: 'https://picsum.photos/seed/divinus-about-exchange/600/400' },
+  { num: '04', name: 'Divinus Labs',               mandate: 'Software products and digital systems engineered for African markets, built to be owned, not rented.',                  img: 'https://picsum.photos/seed/divinus-about-labs/600/400' },
+  { num: '05', name: 'Divinus Capital',            mandate: 'Education Before Action. A financial education division — not a signals group, not advisory, a school.',                img: 'https://picsum.photos/seed/divinus-about-capital/600/400' },
+  { num: '06', name: 'Strategic Partners',         mandate: 'Long-horizon partnerships with the institutions building the continent — public, private, and philanthropic.',          img: 'https://picsum.photos/seed/divinus-about-partners/600/400' },
+  { num: '07', name: 'The Divinus Foundation',     mandate: 'The philanthropic arm of the group — where conviction meets contribution.',                                              img: 'https://picsum.photos/seed/divinus-about-foundation/600/400' },
 ];
 
 const VALUES = [
-  { name: 'Precision', body: 'Every standard we set is a promise. We refuse to round down.' },
-  { name: 'Integrity', body: 'What we say privately and what we ship publicly are the same thing.' },
-  { name: 'Ambition',  body: 'The scale of the work matches the scale of the continent we serve.' },
-  { name: 'Impact',    body: 'Outcomes outlive the engagement. Substance over spectacle.' },
+  { name: 'Precision', body: 'Every standard we set is a promise. We refuse to round down.',                img: 'https://picsum.photos/seed/divinus-value-precision/800/1000' },
+  { name: 'Integrity', body: 'What we say privately and what we ship publicly are the same thing.',         img: 'https://picsum.photos/seed/divinus-value-integrity/800/1000' },
+  { name: 'Ambition',  body: 'The scale of the work matches the scale of the continent we serve.',         img: 'https://picsum.photos/seed/divinus-value-ambition/800/1000' },
+  { name: 'Impact',    body: 'Outcomes outlive the engagement. Substance over spectacle.',                 img: 'https://picsum.photos/seed/divinus-value-impact/800/1000' },
+];
+
+const LEADERSHIP_IMGS = [
+  'https://picsum.photos/seed/divinus-leader-01/700/900',
+  'https://picsum.photos/seed/divinus-leader-02/700/900',
+  'https://picsum.photos/seed/divinus-leader-03/700/900',
+  'https://picsum.photos/seed/divinus-leader-04/700/900',
 ];
 
 export default function AboutPage() {
@@ -30,15 +38,26 @@ export default function AboutPage() {
     <main>
       <PageHeadlines />
 
-      {/* PAGE HEADER */}
-      <section data-fx="gsap" data-section="about-header" data-above-fold className="relative overflow-hidden" aria-labelledby="about-title">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-20 pb-16 sm:pt-28 sm:pb-24 lg:pt-32 lg:pb-28">
-          <p data-anim="eyebrow" className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">About</p>
+      {/* PAGE HEADER — full-bleed cinematic */}
+      <section data-fx="gsap" data-section="about-header" data-above-fold className="group relative overflow-hidden min-h-[88vh] flex items-end" aria-labelledby="about-title">
+        <Image
+          src="https://picsum.photos/seed/divinus-about-hero-full/2400/1600"
+          alt=""
+          fill
+          sizes="100vw"
+          priority
+          className="duotone object-cover"
+          aria-hidden="true"
+        />
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-black/30" />
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent" />
+        <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 pt-32 pb-20 sm:pb-28 w-full">
+          <p data-anim="eyebrow" className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-300">About</p>
           <h1 id="about-title" className="mt-8 max-w-[18ch] text-[clamp(44px,7vw,108px)] font-bold display-tight text-neutral-50 text-balance">
             <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">About Divinus</span></span>
-            <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block text-neutral-500">Investment Group.</span></span>
+            <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block text-neutral-400">Investment Group.</span></span>
           </h1>
-          <p className="mt-10 max-w-2xl text-lg sm:text-xl leading-[1.55] text-neutral-400 text-pretty">
+          <p className="mt-10 max-w-2xl text-lg sm:text-xl leading-[1.55] text-neutral-200 text-pretty">
             A multi-division group company building the infrastructure of growth —
             in organisations, in markets, and in people. Headquartered with global
             ambition and African conviction.
@@ -74,12 +93,43 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
+
+          {/* Editorial image strip — duotone, color on hover */}
+          <div className="group mt-16 grid grid-cols-1 sm:grid-cols-12 gap-3">
+            <div className="relative aspect-[16/9] sm:col-span-8 overflow-hidden rounded-md">
+              <Image
+                src="https://picsum.photos/seed/divinus-about-who-1/1600/900"
+                alt="One organism"
+                fill
+                sizes="(min-width: 640px) 66vw, 100vw"
+                className="duotone object-cover"
+              />
+            </div>
+            <div className="relative aspect-[16/9] sm:col-span-4 sm:aspect-auto overflow-hidden rounded-md">
+              <Image
+                src="https://picsum.photos/seed/divinus-about-who-2/900/700"
+                alt="Operational rhythm"
+                fill
+                sizes="(min-width: 640px) 33vw, 100vw"
+                className="duotone object-cover"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
       {/* MISSION — single hero-statement block */}
-      <section data-fx="gsap" data-section="mission" data-pin-reveal className="border-t border-neutral-800 bg-neutral-900/40 py-32 sm:py-44" aria-labelledby="mission-title">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <section data-fx="gsap" data-section="mission" data-pin-reveal className="group relative overflow-hidden border-t border-neutral-800 py-32 sm:py-44" aria-labelledby="mission-title">
+        <Image
+          src="https://picsum.photos/seed/divinus-about-mission/2400/1400"
+          alt=""
+          fill
+          sizes="100vw"
+          className="duotone object-cover"
+          aria-hidden="true"
+        />
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/70 to-black/55" />
+        <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
           <p data-anim="eyebrow" className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">Mission</p>
           <h2 id="mission-title" className="mt-8 max-w-[20ch] text-[clamp(40px,6.4vw,104px)] font-bold display-tight text-neutral-50 text-balance">
             <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">Build organisations.</span></span>
@@ -110,15 +160,25 @@ export default function AboutPage() {
 
           <div className="border-t border-neutral-800">
             {ARCHITECTURE.map((d) => (
-              <article key={d.num} className="grid grid-cols-12 gap-x-6 gap-y-3 py-10 sm:py-12 border-b border-neutral-800">
+              <article key={d.num} className="group grid grid-cols-12 gap-x-6 gap-y-4 py-10 sm:py-12 border-b border-neutral-800 items-start">
                 <div className="col-span-12 sm:col-span-1">
                   <span className="text-xs font-mono uppercase tracking-[0.16em] text-neutral-500">{d.num}</span>
                 </div>
-                <div className="col-span-12 sm:col-span-4">
+                <div className="col-span-12 sm:col-span-7 space-y-4">
                   <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-neutral-50">{d.name}</h3>
-                </div>
-                <div className="col-span-12 sm:col-span-7">
                   <p className="text-lg leading-[1.6] text-neutral-400 text-pretty max-w-xl">{d.mandate}</p>
+                </div>
+                <div className="col-span-12 sm:col-span-4">
+                  <div className="relative aspect-[4/3] overflow-hidden rounded-md">
+                    <Image
+                      src={d.img}
+                      alt=""
+                      fill
+                      sizes="(min-width: 640px) 33vw, 100vw"
+                      className="duotone object-cover"
+                      aria-hidden="true"
+                    />
+                  </div>
                 </div>
               </article>
             ))}
@@ -147,12 +207,23 @@ export default function AboutPage() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-neutral-800 border border-neutral-800">
             {VALUES.map((v, i) => (
-              <article key={v.name} className="bg-neutral-950 p-8 sm:p-10 transition-colors duration-300 hover:bg-neutral-900/60">
-                <p className="text-xs font-mono uppercase tracking-[0.16em] text-neutral-500">
-                  {String(i + 1).padStart(2, '0')}
-                </p>
-                <h3 className="mt-5 text-2xl sm:text-3xl font-bold tracking-tight text-neutral-50">{v.name}</h3>
-                <p className="mt-4 text-sm leading-[1.7] text-neutral-400 text-pretty">{v.body}</p>
+              <article key={v.name} className="group relative bg-neutral-950 p-8 sm:p-10 overflow-hidden min-h-[320px]">
+                <Image
+                  src={v.img}
+                  alt=""
+                  fill
+                  sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                  className="duotone object-cover opacity-65"
+                  aria-hidden="true"
+                />
+                <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/85 to-neutral-950/50 transition-opacity duration-500 group-hover:opacity-70" />
+                <div className="relative">
+                  <p className="text-xs font-mono uppercase tracking-[0.16em] text-neutral-500">
+                    {String(i + 1).padStart(2, '0')}
+                  </p>
+                  <h3 className="mt-5 text-2xl sm:text-3xl font-bold tracking-tight text-neutral-50">{v.name}</h3>
+                  <p className="mt-4 text-sm leading-[1.7] text-neutral-300 text-pretty">{v.body}</p>
+                </div>
               </article>
             ))}
           </div>
@@ -176,6 +247,15 @@ export default function AboutPage() {
                 on infrastructure — the kind that compounds, the kind that survives
                 a generation, the kind that converts capability into outcomes.
               </p>
+              <div className="group relative aspect-[16/9] overflow-hidden rounded-md my-2">
+                <Image
+                  src="https://picsum.photos/seed/divinus-about-story/1600/900"
+                  alt="Why Divinus was built"
+                  fill
+                  sizes="(min-width: 1024px) 66vw, 100vw"
+                  className="duotone object-cover"
+                />
+              </div>
               <p className="text-neutral-400">
                 Divinus was built to be that infrastructure. Not a fund, not a
                 consultancy, not a community — but the architecture that ties capital,
@@ -218,12 +298,23 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* Placeholder leadership grid — neutral tiles, no fabricated names */}
+          {/* Placeholder leadership grid — image tiles, no fabricated names */}
           <div className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-px bg-neutral-800 border border-neutral-800">
             {[1,2,3,4].map((i) => (
-              <div key={i} className="bg-neutral-950 aspect-[3/4] flex flex-col justify-end p-6">
-                <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-700">0{i} · Leadership</p>
-                <p className="mt-3 text-base font-semibold tracking-tight text-neutral-600">To be announced</p>
+              <div key={i} className="group relative bg-neutral-950 aspect-[3/4] overflow-hidden">
+                <Image
+                  src={LEADERSHIP_IMGS[i - 1]}
+                  alt=""
+                  fill
+                  sizes="(min-width: 768px) 25vw, 50vw"
+                  className="duotone object-cover"
+                  aria-hidden="true"
+                />
+                <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/70 to-neutral-950/30" />
+                <div className="absolute inset-0 flex flex-col justify-end p-6">
+                  <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-400">0{i} · Leadership</p>
+                  <p className="mt-3 text-base font-semibold tracking-tight text-neutral-300">To be announced</p>
+                </div>
               </div>
             ))}
           </div>
@@ -231,7 +322,16 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <ParticleField data-fx="gsap" data-section="cta" className="bg-black text-neutral-50" aria-labelledby="cta-title">
+      <ParticleField data-fx="gsap" data-section="cta" className="group bg-black text-neutral-50" aria-labelledby="cta-title">
+        <Image
+          src="https://picsum.photos/seed/divinus-about-cta/2400/1200"
+          alt=""
+          fill
+          sizes="100vw"
+          className="duotone object-cover opacity-55"
+          aria-hidden="true"
+        />
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/55" />
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 py-32 sm:py-44">
           <div className="grid lg:grid-cols-12 gap-x-12 gap-y-10 items-end">
             <div className="lg:col-span-8">

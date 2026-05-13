@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import ParticleField from '../components/ParticleField';
 import PageHeadlines from '../components/PageHeadlines';
 
@@ -27,11 +28,12 @@ type Division = {
   serviceTitle: string;
   services: { name: string; line: string }[];
   audience?: { title: string; items: string[] };
+  img: string;
 };
 
 const DIVISIONS: Division[] = [
   {
-    num: '01', id: 'ai', eyebrow: 'Intelligence',
+    num: '01', id: 'ai', eyebrow: 'Intelligence', img: 'https://picsum.photos/seed/divinus-divisions-ai/1200/900',
     name: 'Divinus AI · Vision Africa',
     tagline: 'African AI capability — built, taught, and deployed where it counts.',
     intro:
@@ -50,7 +52,7 @@ const DIVISIONS: Division[] = [
     },
   },
   {
-    num: '02', id: 'advisory', eyebrow: 'Strategy',
+    num: '02', id: 'advisory', eyebrow: 'Strategy', img: 'https://picsum.photos/seed/divinus-divisions-advisory/1200/900',
     name: 'Divinus Advisory',
     tagline: 'Where Strategy Meets Substance.',
     intro:
@@ -70,7 +72,7 @@ const DIVISIONS: Division[] = [
     },
   },
   {
-    num: '03', id: 'exchange', eyebrow: 'Community',
+    num: '03', id: 'exchange', eyebrow: 'Community', img: 'https://picsum.photos/seed/divinus-divisions-exchange/1200/900',
     name: 'Divinus Exchange',
     tagline: 'Where Substance Meets Community.',
     intro:
@@ -84,7 +86,7 @@ const DIVISIONS: Division[] = [
     ],
   },
   {
-    num: '04', id: 'labs', eyebrow: 'Products',
+    num: '04', id: 'labs', eyebrow: 'Products', img: 'https://picsum.photos/seed/divinus-divisions-labs/1200/900',
     name: 'Divinus Labs',
     intro:
       'Labs builds software products and digital systems engineered for African markets — built to be owned, not rented; built to scale, not to demo.',
@@ -102,7 +104,7 @@ const DIVISIONS: Division[] = [
     },
   },
   {
-    num: '05', id: 'capital', eyebrow: 'Education',
+    num: '05', id: 'capital', eyebrow: 'Education', img: 'https://picsum.photos/seed/divinus-divisions-capital/1200/900',
     name: 'Divinus Capital',
     tagline: 'Education Before Action.',
     intro:
@@ -116,7 +118,7 @@ const DIVISIONS: Division[] = [
     ],
   },
   {
-    num: '06', id: 'partners', eyebrow: 'Alliances',
+    num: '06', id: 'partners', eyebrow: 'Alliances', img: 'https://picsum.photos/seed/divinus-divisions-partners/1200/900',
     name: 'Strategic Partners',
     tagline: 'One Group. One Standard.',
     intro:
@@ -135,7 +137,7 @@ const DIVISIONS: Division[] = [
     },
   },
   {
-    num: '07', id: 'foundation', eyebrow: 'Impact',
+    num: '07', id: 'foundation', eyebrow: 'Impact', img: 'https://picsum.photos/seed/divinus-divisions-foundation/1200/900',
     name: 'The Divinus Foundation',
     intro:
       'The Foundation is where conviction meets contribution. It is the philanthropic arm of the group — funded by the group, operated independently, accountable to mission first.',
@@ -158,15 +160,26 @@ export default function DivisionsPage() {
     <main>
       <PageHeadlines />
 
-      {/* PAGE HEADER */}
-      <section data-fx="gsap" data-section="div-header" data-above-fold className="relative overflow-hidden" aria-labelledby="div-title">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-20 pb-12 sm:pt-28 sm:pb-16 lg:pt-32 lg:pb-20">
-          <p data-anim="eyebrow" className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">Divisions</p>
+      {/* PAGE HEADER — full-bleed cinematic */}
+      <section data-fx="gsap" data-section="div-header" data-above-fold className="group relative overflow-hidden min-h-[88vh] flex items-end" aria-labelledby="div-title">
+        <Image
+          src="https://picsum.photos/seed/divinus-divisions-hero-full/2400/1600"
+          alt=""
+          fill
+          sizes="100vw"
+          priority
+          className="duotone object-cover"
+          aria-hidden="true"
+        />
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-black/30" />
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent" />
+        <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 pt-32 pb-20 sm:pb-28 w-full">
+          <p data-anim="eyebrow" className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-300">Divisions</p>
           <h1 id="div-title" className="mt-8 max-w-[18ch] text-[clamp(44px,7vw,108px)] font-bold display-tight text-neutral-50 text-balance">
             <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">Seven divisions.</span></span>
-            <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block text-neutral-500">One direction.</span></span>
+            <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block text-neutral-400">One direction.</span></span>
           </h1>
-          <p className="mt-10 max-w-2xl text-lg sm:text-xl leading-[1.55] text-neutral-400 text-pretty">
+          <p className="mt-10 max-w-2xl text-lg sm:text-xl leading-[1.55] text-neutral-200 text-pretty">
             One Group. Seven Divisions. One Direction. Each carries a single mandate.
             Together they form the infrastructure of growth Divinus exists to build.
           </p>
@@ -214,19 +227,31 @@ export default function DivisionsPage() {
               </aside>
             )}
 
-            <div className="grid lg:grid-cols-12 gap-x-12 gap-y-10 items-start">
-              <div className="lg:col-span-5">
-                <p className="text-xs font-mono uppercase tracking-[0.16em] text-neutral-500">
-                  {d.num} / {d.eyebrow}
-                </p>
-                <h2 id={`${d.id}-title`} className="mt-6 text-[clamp(34px,4.6vw,64px)] font-bold display-tight text-neutral-50 text-balance">
-                  <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">{d.name}</span></span>
-                </h2>
-                {d.tagline && (
-                  <p className="mt-6 text-lg sm:text-xl font-medium text-neutral-200 italic text-pretty">
-                    {d.tagline}
+            <div className="grid lg:grid-cols-12 gap-x-12 gap-y-10 lg:items-stretch">
+              <div className="group lg:col-span-5 flex flex-col justify-between gap-10">
+                <div>
+                  <p className="text-xs font-mono uppercase tracking-[0.16em] text-neutral-500">
+                    {d.num} / {d.eyebrow}
                   </p>
-                )}
+                  <h2 id={`${d.id}-title`} className="mt-6 text-[clamp(34px,4.6vw,64px)] font-bold display-tight text-neutral-50 text-balance">
+                    <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">{d.name}</span></span>
+                  </h2>
+                  {d.tagline && (
+                    <p className="mt-6 text-lg sm:text-xl font-medium text-neutral-200 italic text-pretty">
+                      {d.tagline}
+                    </p>
+                  )}
+                </div>
+                <div className="relative aspect-[4/3] w-full max-w-[88%] overflow-hidden rounded-md">
+                  <Image
+                    src={d.img}
+                    alt=""
+                    fill
+                    sizes="(min-width: 1024px) 35vw, 100vw"
+                    className="duotone object-cover"
+                    aria-hidden="true"
+                  />
+                </div>
               </div>
 
               <div className="lg:col-span-7 lg:pl-6 space-y-7">
@@ -294,7 +319,16 @@ export default function DivisionsPage() {
       ))}
 
       {/* CTA */}
-      <ParticleField data-fx="gsap" data-section="cta" className="bg-black text-neutral-50 border-t border-neutral-900" aria-labelledby="cta-title">
+      <ParticleField data-fx="gsap" data-section="cta" className="group bg-black text-neutral-50 border-t border-neutral-900" aria-labelledby="cta-title">
+        <Image
+          src="https://picsum.photos/seed/divinus-divisions-cta/2400/1200"
+          alt=""
+          fill
+          sizes="100vw"
+          className="duotone object-cover opacity-55"
+          aria-hidden="true"
+        />
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/55" />
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 py-32 sm:py-44">
           <div className="grid lg:grid-cols-12 gap-x-12 gap-y-10 items-end">
             <div className="lg:col-span-8">
