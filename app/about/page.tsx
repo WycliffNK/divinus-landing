@@ -38,33 +38,30 @@ export default function AboutPage() {
     <main>
       <PageHeadlines />
 
-      {/* PAGE HEADER */}
-      <section data-fx="gsap" data-section="about-header" data-above-fold className="relative overflow-hidden" aria-labelledby="about-title">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-20 pb-16 sm:pt-28 sm:pb-24 lg:pt-32 lg:pb-28">
-          <p data-anim="eyebrow" className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">About</p>
+      {/* PAGE HEADER — full-bleed cinematic */}
+      <section data-fx="gsap" data-section="about-header" data-above-fold className="group relative overflow-hidden min-h-[88vh] flex items-end" aria-labelledby="about-title">
+        <Image
+          src="https://picsum.photos/seed/divinus-about-hero-full/2400/1600"
+          alt=""
+          fill
+          sizes="100vw"
+          priority
+          className="duotone object-cover"
+          aria-hidden="true"
+        />
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-black/30" />
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent" />
+        <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 pt-32 pb-20 sm:pb-28 w-full">
+          <p data-anim="eyebrow" className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-300">About</p>
           <h1 id="about-title" className="mt-8 max-w-[18ch] text-[clamp(44px,7vw,108px)] font-bold display-tight text-neutral-50 text-balance">
             <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">About Divinus</span></span>
-            <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block text-neutral-500">Investment Group.</span></span>
+            <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block text-neutral-400">Investment Group.</span></span>
           </h1>
-          <div className="mt-14 grid lg:grid-cols-12 gap-x-12 gap-y-10 items-end">
-            <p className="lg:col-span-6 text-lg sm:text-xl leading-[1.55] text-neutral-400 text-pretty">
-              A multi-division group company building the infrastructure of growth —
-              in organisations, in markets, and in people. Headquartered with global
-              ambition and African conviction.
-            </p>
-            <div className="group lg:col-span-6 lg:pl-6">
-              <div className="relative aspect-[16/10] overflow-hidden rounded-md">
-                <Image
-                  src="https://picsum.photos/seed/divinus-about-hero/1600/1000"
-                  alt="Divinus across markets"
-                  fill
-                  sizes="(min-width: 1024px) 45vw, 100vw"
-                  priority
-                  className="duotone object-cover"
-                />
-              </div>
-            </div>
-          </div>
+          <p className="mt-10 max-w-2xl text-lg sm:text-xl leading-[1.55] text-neutral-200 text-pretty">
+            A multi-division group company building the infrastructure of growth —
+            in organisations, in markets, and in people. Headquartered with global
+            ambition and African conviction.
+          </p>
         </div>
       </section>
 
@@ -163,27 +160,25 @@ export default function AboutPage() {
 
           <div className="border-t border-neutral-800">
             {ARCHITECTURE.map((d) => (
-              <article key={d.num} className="group grid grid-cols-12 gap-x-6 gap-y-3 py-10 sm:py-12 border-b border-neutral-800">
+              <article key={d.num} className="group grid grid-cols-12 gap-x-6 gap-y-4 py-10 sm:py-12 border-b border-neutral-800 items-start">
                 <div className="col-span-12 sm:col-span-1">
                   <span className="text-xs font-mono uppercase tracking-[0.16em] text-neutral-500">{d.num}</span>
                 </div>
-                <div className="col-span-12 sm:col-span-3">
+                <div className="col-span-12 sm:col-span-7 space-y-4">
+                  <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-neutral-50">{d.name}</h3>
+                  <p className="text-lg leading-[1.6] text-neutral-400 text-pretty max-w-xl">{d.mandate}</p>
+                </div>
+                <div className="col-span-12 sm:col-span-4">
                   <div className="relative aspect-[4/3] overflow-hidden rounded-md">
                     <Image
                       src={d.img}
                       alt=""
                       fill
-                      sizes="(min-width: 640px) 25vw, 100vw"
+                      sizes="(min-width: 640px) 33vw, 100vw"
                       className="duotone object-cover"
                       aria-hidden="true"
                     />
                   </div>
-                </div>
-                <div className="col-span-12 sm:col-span-4">
-                  <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-neutral-50">{d.name}</h3>
-                </div>
-                <div className="col-span-12 sm:col-span-4">
-                  <p className="text-lg leading-[1.6] text-neutral-400 text-pretty max-w-xl">{d.mandate}</p>
                 </div>
               </article>
             ))}

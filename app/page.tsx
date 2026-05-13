@@ -230,78 +230,82 @@ export default function Home() {
           <div className="mt-14 grid md:grid-cols-2 gap-6">
             <BorderGlow
               data-anim="comm-card"
-              edgeSensitivity={9}
+              edgeSensitivity={45}
               glowColor="0 0 100"
               backgroundColor="#0a0a0a"
               borderRadius={14}
-              glowRadius={7}
-              glowIntensity={0.2}
-              coneSpread={6}
+              glowRadius={36}
+              glowIntensity={1.0}
+              coneSpread={40}
               animated={false}
               colors={['#fafafa', '#a3a3a3', '#525252']}
               fillOpacity={0.5}
             >
-              <Link href="/communities#men-of-substance" className="group block overflow-hidden rounded-[14px]">
-                <div className="relative aspect-[16/10] w-full overflow-hidden">
-                  <Image
-                    src="https://picsum.photos/seed/divinus-mos/1600/1000"
-                    alt="Men of Substance — community gathering"
-                    fill
-                    sizes="(min-width: 1024px) 40vw, 100vw"
-                    className="duotone object-cover"
-                  />
-                </div>
-                <div className="p-8 sm:p-10">
-                  <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">01 / For men</p>
-                  <h3 className="mt-5 text-3xl sm:text-4xl font-bold tracking-tight text-neutral-50">Men of Substance</h3>
-                  <p className="mt-4 text-sm leading-[1.7] text-neutral-400">
-                    <span className="text-neutral-200">Leadership.</span>{' '}
-                    <span className="text-neutral-200">Discipline.</span>{' '}
-                    <span className="text-neutral-200">Brotherhood.</span>{' '}
-                    <span className="text-neutral-200">Standard.</span>
-                  </p>
-                  <p className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-neutral-300 group-hover:text-neutral-50 transition">
-                    Explore Men of Substance <span className="transition group-hover:translate-x-1">→</span>
-                  </p>
+              <Link href="/communities#men-of-substance" className="group block p-[2px] rounded-[14px]">
+                <div className="overflow-hidden rounded-[12px]">
+                  <div className="relative aspect-[16/10] w-full">
+                    <Image
+                      src="https://picsum.photos/seed/divinus-mos/1600/1000"
+                      alt="Men of Substance — community gathering"
+                      fill
+                      sizes="(min-width: 1024px) 40vw, 100vw"
+                      className="duotone object-cover"
+                    />
+                  </div>
+                  <div className="p-8 sm:p-10">
+                    <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">01 / For men</p>
+                    <h3 className="mt-5 text-3xl sm:text-4xl font-bold tracking-tight text-neutral-50">Men of Substance</h3>
+                    <p className="mt-4 text-sm leading-[1.7] text-neutral-400">
+                      <span className="text-neutral-200">Leadership.</span>{' '}
+                      <span className="text-neutral-200">Discipline.</span>{' '}
+                      <span className="text-neutral-200">Brotherhood.</span>{' '}
+                      <span className="text-neutral-200">Standard.</span>
+                    </p>
+                    <p className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-neutral-300 group-hover:text-neutral-50 transition">
+                      Explore Men of Substance <span className="transition group-hover:translate-x-1">→</span>
+                    </p>
+                  </div>
                 </div>
               </Link>
             </BorderGlow>
 
             <BorderGlow
               data-anim="comm-card"
-              edgeSensitivity={9}
+              edgeSensitivity={45}
               glowColor="0 0 100"
               backgroundColor="#0a0a0a"
               borderRadius={14}
-              glowRadius={7}
-              glowIntensity={0.2}
-              coneSpread={6}
+              glowRadius={36}
+              glowIntensity={1.0}
+              coneSpread={40}
               animated={false}
               colors={['#fafafa', '#a3a3a3', '#525252']}
               fillOpacity={0.5}
             >
-              <Link href="/communities#genesis-woman" className="group block overflow-hidden rounded-[14px]">
-                <div className="relative aspect-[16/10] w-full overflow-hidden">
-                  <Image
-                    src="https://picsum.photos/seed/divinus-gw/1600/1000"
-                    alt="Genesis Woman — community gathering"
-                    fill
-                    sizes="(min-width: 1024px) 40vw, 100vw"
-                    className="duotone object-cover"
-                  />
-                </div>
-                <div className="p-8 sm:p-10">
-                  <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">02 / For women</p>
-                  <h3 className="mt-5 text-3xl sm:text-4xl font-bold tracking-tight text-neutral-50">Genesis Woman</h3>
-                  <p className="mt-4 text-sm leading-[1.7] text-neutral-400">
-                    <span className="text-neutral-200">Purpose.</span>{' '}
-                    <span className="text-neutral-200">Clarity.</span>{' '}
-                    <span className="text-neutral-200">Excellence.</span>{' '}
-                    <span className="text-neutral-200">Sisterhood.</span>
-                  </p>
-                  <p className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-neutral-300 group-hover:text-neutral-50 transition">
-                    Explore Genesis Woman <span className="transition group-hover:translate-x-1">→</span>
-                  </p>
+              <Link href="/communities#genesis-woman" className="group block p-[2px] rounded-[14px]">
+                <div className="overflow-hidden rounded-[12px]">
+                  <div className="relative aspect-[16/10] w-full">
+                    <Image
+                      src="https://picsum.photos/seed/divinus-gw/1600/1000"
+                      alt="Genesis Woman — community gathering"
+                      fill
+                      sizes="(min-width: 1024px) 40vw, 100vw"
+                      className="duotone object-cover"
+                    />
+                  </div>
+                  <div className="p-8 sm:p-10">
+                    <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">02 / For women</p>
+                    <h3 className="mt-5 text-3xl sm:text-4xl font-bold tracking-tight text-neutral-50">Genesis Woman</h3>
+                    <p className="mt-4 text-sm leading-[1.7] text-neutral-400">
+                      <span className="text-neutral-200">Purpose.</span>{' '}
+                      <span className="text-neutral-200">Clarity.</span>{' '}
+                      <span className="text-neutral-200">Excellence.</span>{' '}
+                      <span className="text-neutral-200">Sisterhood.</span>
+                    </p>
+                    <p className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-neutral-300 group-hover:text-neutral-50 transition">
+                      Explore Genesis Woman <span className="transition group-hover:translate-x-1">→</span>
+                    </p>
+                  </div>
                 </div>
               </Link>
             </BorderGlow>

@@ -160,32 +160,29 @@ export default function DivisionsPage() {
     <main>
       <PageHeadlines />
 
-      {/* PAGE HEADER */}
-      <section data-fx="gsap" data-section="div-header" data-above-fold className="relative overflow-hidden" aria-labelledby="div-title">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-20 pb-12 sm:pt-28 sm:pb-16 lg:pt-32 lg:pb-20">
-          <p data-anim="eyebrow" className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">Divisions</p>
+      {/* PAGE HEADER — full-bleed cinematic */}
+      <section data-fx="gsap" data-section="div-header" data-above-fold className="group relative overflow-hidden min-h-[88vh] flex items-end" aria-labelledby="div-title">
+        <Image
+          src="https://picsum.photos/seed/divinus-divisions-hero-full/2400/1600"
+          alt=""
+          fill
+          sizes="100vw"
+          priority
+          className="duotone object-cover"
+          aria-hidden="true"
+        />
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-black/30" />
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent" />
+        <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 pt-32 pb-20 sm:pb-28 w-full">
+          <p data-anim="eyebrow" className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-300">Divisions</p>
           <h1 id="div-title" className="mt-8 max-w-[18ch] text-[clamp(44px,7vw,108px)] font-bold display-tight text-neutral-50 text-balance">
             <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">Seven divisions.</span></span>
-            <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block text-neutral-500">One direction.</span></span>
+            <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block text-neutral-400">One direction.</span></span>
           </h1>
-          <div className="mt-10 grid lg:grid-cols-12 gap-x-12 gap-y-10">
-            <p className="lg:col-span-6 text-lg sm:text-xl leading-[1.55] text-neutral-400 text-pretty">
-              One Group. Seven Divisions. One Direction. Each carries a single mandate.
-              Together they form the infrastructure of growth Divinus exists to build.
-            </p>
-            <div className="group lg:col-span-6">
-              <div className="relative aspect-[16/9] overflow-hidden rounded-md">
-                <Image
-                  src="https://picsum.photos/seed/divinus-divisions-hero/1600/900"
-                  alt="The architecture of Divinus"
-                  fill
-                  sizes="(min-width: 1024px) 50vw, 100vw"
-                  priority
-                  className="duotone object-cover"
-                />
-              </div>
-            </div>
-          </div>
+          <p className="mt-10 max-w-2xl text-lg sm:text-xl leading-[1.55] text-neutral-200 text-pretty">
+            One Group. Seven Divisions. One Direction. Each carries a single mandate.
+            Together they form the infrastructure of growth Divinus exists to build.
+          </p>
         </div>
       </section>
 
