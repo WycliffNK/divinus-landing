@@ -2,6 +2,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import ParticleField from '../components/ParticleField';
 import PageHeadlines from '../components/PageHeadlines';
+import ShrinkOnScroll from '../components/ShrinkOnScroll';
+import ExpandOnScroll from '../components/ExpandOnScroll';
 
 export const metadata = {
   title: 'Communities — Divinus Exchange',
@@ -108,10 +110,19 @@ export default function CommunitiesPage() {
         </div>
       </section>
 
-      {/* PLATFORM OVERVIEW */}
+      {/* PLATFORM OVERVIEW — wide image header, contracts on scroll */}
       <section data-fx="gsap" data-section="platform" className="border-t border-neutral-800 py-20 sm:py-28" aria-labelledby="platform-title">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid lg:grid-cols-12 gap-x-12 gap-y-10 items-start">
+          <ShrinkOnScroll className="group relative aspect-[21/8] overflow-hidden">
+            <Image
+              src="https://picsum.photos/seed/divinus-platform-wide/2400/914"
+              alt="The Exchange"
+              fill
+              sizes="100vw"
+              className="duotone object-cover"
+            />
+          </ShrinkOnScroll>
+          <div className="mt-14 grid lg:grid-cols-12 gap-x-12 gap-y-10 items-start">
             <div className="lg:col-span-5">
               <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">The platform</p>
               <h2 id="platform-title" className="mt-6 text-[clamp(30px,4.4vw,56px)] font-bold display-tight text-neutral-50 text-balance">
@@ -131,28 +142,6 @@ export default function CommunitiesPage() {
                 members actually need. What they share is the line: premium,
                 purposeful, precise, never performative.
               </p>
-            </div>
-          </div>
-
-          {/* Editorial strip — both communities in one row */}
-          <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div className="group relative aspect-[5/4] overflow-hidden rounded-md">
-              <Image
-                src="https://picsum.photos/seed/divinus-platform-mos/1200/1000"
-                alt="Men of Substance"
-                fill
-                sizes="(min-width: 640px) 50vw, 100vw"
-                className="duotone object-cover"
-              />
-            </div>
-            <div className="group relative aspect-[5/4] overflow-hidden rounded-md">
-              <Image
-                src="https://picsum.photos/seed/divinus-platform-gw/1200/1000"
-                alt="Genesis Woman"
-                fill
-                sizes="(min-width: 640px) 50vw, 100vw"
-                className="duotone object-cover"
-              />
             </div>
           </div>
         </div>
@@ -294,7 +283,7 @@ export default function CommunitiesPage() {
       {/* CROSS-LINK TO CAPITAL */}
       <section data-fx="gsap" data-section="capital-bridge" className="py-20 sm:py-28" aria-labelledby="capital-link">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="group relative aspect-[16/6] overflow-hidden rounded-md mb-14">
+          <ExpandOnScroll className="group relative aspect-[16/6] overflow-hidden mb-14">
             <Image
               src="https://picsum.photos/seed/divinus-comm-capital/1600/600"
               alt="Bridge to Divinus Capital"
@@ -302,7 +291,7 @@ export default function CommunitiesPage() {
               sizes="100vw"
               className="duotone object-cover"
             />
-          </div>
+          </ExpandOnScroll>
           <div className="grid lg:grid-cols-12 gap-x-12 gap-y-10 items-end border-t border-neutral-800 pt-16 sm:pt-20">
             <div className="lg:col-span-7">
               <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">A bridge to Capital</p>

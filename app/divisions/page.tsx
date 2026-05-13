@@ -227,25 +227,27 @@ export default function DivisionsPage() {
               </aside>
             )}
 
-            <div className="grid lg:grid-cols-12 gap-x-12 gap-y-10 items-start">
-              <div className="group lg:col-span-5">
-                <p className="text-xs font-mono uppercase tracking-[0.16em] text-neutral-500">
-                  {d.num} / {d.eyebrow}
-                </p>
-                <h2 id={`${d.id}-title`} className="mt-6 text-[clamp(34px,4.6vw,64px)] font-bold display-tight text-neutral-50 text-balance">
-                  <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">{d.name}</span></span>
-                </h2>
-                {d.tagline && (
-                  <p className="mt-6 text-lg sm:text-xl font-medium text-neutral-200 italic text-pretty">
-                    {d.tagline}
+            <div className="grid lg:grid-cols-12 gap-x-12 gap-y-10 lg:items-stretch">
+              <div className="group lg:col-span-5 flex flex-col justify-between gap-10">
+                <div>
+                  <p className="text-xs font-mono uppercase tracking-[0.16em] text-neutral-500">
+                    {d.num} / {d.eyebrow}
                   </p>
-                )}
-                <div className="relative aspect-[4/3] overflow-hidden rounded-md mt-8">
+                  <h2 id={`${d.id}-title`} className="mt-6 text-[clamp(34px,4.6vw,64px)] font-bold display-tight text-neutral-50 text-balance">
+                    <span className="block overflow-hidden pb-[0.05em]"><span data-anim-line className="block">{d.name}</span></span>
+                  </h2>
+                  {d.tagline && (
+                    <p className="mt-6 text-lg sm:text-xl font-medium text-neutral-200 italic text-pretty">
+                      {d.tagline}
+                    </p>
+                  )}
+                </div>
+                <div className="relative aspect-[4/3] w-full max-w-[88%] overflow-hidden rounded-md">
                   <Image
                     src={d.img}
                     alt=""
                     fill
-                    sizes="(min-width: 1024px) 40vw, 100vw"
+                    sizes="(min-width: 1024px) 35vw, 100vw"
                     className="duotone object-cover"
                     aria-hidden="true"
                   />

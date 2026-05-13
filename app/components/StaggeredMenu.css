@@ -265,7 +265,8 @@
   transform-origin: 50% 100%;
 }
 
-.sm-panel-item:hover { color: var(--sm-accent, #C9A84C); }
+.sm-panel-item:hover { color: #a3a3a3; }
+.sm-panel-item[aria-current="page"] { color: var(--sm-accent, #C9A84C); }
 
 .sm-panel-list[data-numbering] { counter-reset: smItem; }
 
