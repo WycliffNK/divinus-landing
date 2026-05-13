@@ -222,7 +222,7 @@ export default function AboutPage() {
                     {String(i + 1).padStart(2, '0')}
                   </p>
                   <h3 className="mt-5 text-2xl sm:text-3xl font-bold tracking-tight text-neutral-50">{v.name}</h3>
-                  <p className="mt-4 text-sm leading-[1.7] text-neutral-300 text-pretty">{v.body}</p>
+                  <p className="mt-4 text-base sm:text-sm leading-[1.7] text-neutral-300 text-pretty">{v.body}</p>
                 </div>
               </article>
             ))}

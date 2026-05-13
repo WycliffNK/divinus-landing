@@ -255,7 +255,7 @@ export default function Home() {
                   <div className="p-8 sm:p-10">
                     <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">01 / For men</p>
                     <h3 className="mt-5 text-3xl sm:text-4xl font-bold tracking-tight text-neutral-50">Men of Substance</h3>
-                    <p className="mt-4 text-sm leading-[1.7] text-neutral-400">
+                    <p className="mt-4 text-base sm:text-sm leading-[1.7] text-neutral-400">
                       <span className="text-neutral-200">Leadership.</span>{' '}
                       <span className="text-neutral-200">Discipline.</span>{' '}
                       <span className="text-neutral-200">Brotherhood.</span>{' '}
@@ -296,7 +296,7 @@ export default function Home() {
                   <div className="p-8 sm:p-10">
                     <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">02 / For women</p>
                     <h3 className="mt-5 text-3xl sm:text-4xl font-bold tracking-tight text-neutral-50">Genesis Woman</h3>
-                    <p className="mt-4 text-sm leading-[1.7] text-neutral-400">
+                    <p className="mt-4 text-base sm:text-sm leading-[1.7] text-neutral-400">
                       <span className="text-neutral-200">Purpose.</span>{' '}
                       <span className="text-neutral-200">Clarity.</span>{' '}
                       <span className="text-neutral-200">Excellence.</span>{' '}

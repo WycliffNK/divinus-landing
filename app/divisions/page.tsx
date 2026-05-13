@@ -220,7 +220,7 @@ export default function DivisionsPage() {
                 <p className="text-xs font-mono uppercase tracking-[0.18em] text-amber-200/80 mb-2">
                   Important
                 </p>
-                <p className="text-sm leading-[1.65] text-amber-100/90 text-pretty">
+                <p className="text-base sm:text-sm leading-[1.65] text-amber-100/90 text-pretty">
                   Divinus Capital is a financial education division. We do not provide
                   regulated financial advice, manage client funds, or make investment recommendations.
                 </p>
@@ -270,7 +270,7 @@ export default function DivisionsPage() {
                           <p className="text-base font-semibold text-neutral-100 tracking-tight">{s.name}</p>
                         </div>
                         <div className="col-span-12 sm:col-span-8">
-                          <p className="text-sm leading-[1.65] text-neutral-400 text-pretty">{s.line}</p>
+                          <p className="text-base sm:text-sm leading-[1.65] text-neutral-400 text-pretty">{s.line}</p>
                         </div>
                       </li>
                     ))}
@@ -284,7 +284,7 @@ export default function DivisionsPage() {
                     </p>
                     <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2">
                       {d.audience.items.map((it) => (
-                        <li key={it} className="text-sm text-neutral-300 leading-[1.6] flex gap-3">
+                        <li key={it} className="text-base sm:text-sm text-neutral-300 leading-[1.6] flex gap-3">
                           <span className="text-neutral-600 mt-0.5">→</span>
                           <span>{it}</span>
                         </li>

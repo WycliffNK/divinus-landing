@@ -207,7 +207,7 @@ export default function CommunitiesPage() {
                           <p className="text-base font-semibold text-neutral-100 tracking-tight">{p.name}</p>
                         </div>
                         <div className="col-span-12 sm:col-span-8">
-                          <p className="text-sm leading-[1.7] text-neutral-400 text-pretty">{p.line}</p>
+                          <p className="text-base sm:text-sm leading-[1.7] text-neutral-400 text-pretty">{p.line}</p>
                         </div>
                       </li>
                     ))}
@@ -221,7 +221,7 @@ export default function CommunitiesPage() {
                   </p>
                   <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5">
                     {c.audience.map((a) => (
-                      <li key={a} className="flex gap-3 text-sm leading-[1.6] text-neutral-300">
+                      <li key={a} className="flex gap-3 text-base sm:text-sm leading-[1.6] text-neutral-300">
                         <span className="text-neutral-600 mt-0.5">→</span>
                         <span>{a}</span>
                       </li>
@@ -272,7 +272,7 @@ export default function CommunitiesPage() {
                   <h3 className="mt-5 text-xl sm:text-2xl font-bold tracking-tight text-neutral-50">
                     {m.title}
                   </h3>
-                  <p className="mt-4 text-sm leading-[1.7] text-neutral-300 text-pretty">{m.body}</p>
+                  <p className="mt-4 text-base sm:text-sm leading-[1.7] text-neutral-300 text-pretty">{m.body}</p>
                 </div>
               </article>
             ))}
