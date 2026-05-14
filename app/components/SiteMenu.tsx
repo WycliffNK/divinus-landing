@@ -8,7 +8,7 @@ const MENU_ITEMS = [
   { label: 'About',       ariaLabel: 'About Divinus',         link: '/about' },
   { label: 'Divisions',   ariaLabel: 'Seven divisions',       link: '/divisions' },
   { label: 'Communities', ariaLabel: 'Communities',           link: '/communities' },
-  { label: 'Contact',     ariaLabel: 'Get in touch',          link: '/contact' },
+  { label: 'Connect',     ariaLabel: 'Get in touch',          link: '/contact' },
 ];
 
 const SOCIAL_ITEMS = [
