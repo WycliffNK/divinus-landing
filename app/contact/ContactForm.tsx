@@ -24,9 +24,38 @@ const COMMUNITY_ALIASES: Record<string, RouteId> = {
 
 type Props = { initialRoute?: string };
 
+const TOUCH_POINTS = [
+  {
+    id: 'email',
+    label: 'Email',
+    content: <a href="mailto:hello@divinus.com" className="text-lg font-semibold text-neutral-100 underline decoration-neutral-700 underline-offset-[6px] hover:decoration-neutral-50 transition">hello@divinus.com</a>,
+  },
+  {
+    id: 'press',
+    label: 'Press & media',
+    content: <a href="mailto:press@divinus.com" className="text-base font-semibold text-neutral-200 underline decoration-neutral-700 underline-offset-[6px] hover:decoration-neutral-50 transition">press@divinus.com</a>,
+  },
+  {
+    id: 'partners',
+    label: 'Partnerships',
+    content: <a href="mailto:partners@divinus.com" className="text-base font-semibold text-neutral-200 underline decoration-neutral-700 underline-offset-[6px] hover:decoration-neutral-50 transition">partners@divinus.com</a>,
+  },
+  {
+    id: 'response',
+    label: 'Response time',
+    content: <span className="text-base text-neutral-300 leading-[1.6]">We will follow up within two working days.</span>,
+  },
+  {
+    id: 'office',
+    label: 'Office',
+    content: <span className="text-base text-neutral-300 leading-[1.6]">Headquartered with global ambition and African conviction.</span>,
+  },
+];
+
 export default function ContactForm({ initialRoute }: Props) {
   const [route, setRoute] = useState<RouteId>('general');
   const [submitted, setSubmitted] = useState(false);
+  const [openTouchPoint, setOpenTouchPoint] = useState<string | null>(null);
 
   useEffect(() => {
     const r = initialRoute as RouteId | undefined;
@@ -117,43 +146,35 @@ export default function ContactForm({ initialRoute }: Props) {
             <span className="text-neutral-500">within two working days.</span>
           </h2>
 
-          <dl className="mt-10 space-y-7">
-            <div>
-              <dt className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500 mb-2">Email</dt>
-              <dd>
-                <a href="mailto:hello@divinus.com" className="text-lg font-semibold text-neutral-100 underline decoration-neutral-700 underline-offset-[6px] hover:decoration-neutral-50 transition">
-                  hello@divinus.com
-                </a>
-              </dd>
-            </div>
-            <div>
-              <dt className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500 mb-2">Press & media</dt>
-              <dd>
-                <a href="mailto:press@divinus.com" className="text-base font-semibold text-neutral-200 underline decoration-neutral-700 underline-offset-[6px] hover:decoration-neutral-50 transition">
-                  press@divinus.com
-                </a>
-              </dd>
-            </div>
-            <div>
-              <dt className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500 mb-2">Partnerships</dt>
-              <dd>
-                <a href="mailto:partners@divinus.com" className="text-base font-semibold text-neutral-200 underline decoration-neutral-700 underline-offset-[6px] hover:decoration-neutral-50 transition">
-                  partners@divinus.com
-                </a>
-              </dd>
-            </div>
-            <div>
-              <dt className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500 mb-2">Response time</dt>
-              <dd className="text-base text-neutral-300 leading-[1.6]">
-                We will follow up within two working days.
-              </dd>
-            </div>
-            <div>
-              <dt className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500 mb-2">Office</dt>
-              <dd className="text-base text-neutral-300 leading-[1.6]">
-                Headquartered with global ambition and African conviction.
-              </dd>
-            </div>
+          <dl className="mt-10 border-t border-neutral-800">
+            {TOUCH_POINTS.map(tp => {
+              const open = openTouchPoint === tp.id;
+              return (
+                <div key={tp.id} className="border-b border-neutral-800">
+                  <button
+                    type="button"
+                    onClick={() => setOpenTouchPoint(open ? null : tp.id)}
+                    aria-expanded={open}
+                    className="flex w-full items-center justify-between py-4 text-left group"
+                  >
+                    <dt className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500 group-hover:text-neutral-300 transition">
+                      {tp.label}
+                    </dt>
+                    <svg
+                      className={`h-4 w-4 text-neutral-600 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
+                      fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                    </svg>
+                  </button>
+                  {open && (
+                    <dd className="pb-5 text-sm">
+                      {tp.content}
+                    </dd>
+                  )}
+                </div>
+              );
+            })}
           </dl>
         </aside>
 
