@@ -150,10 +150,14 @@ export default function ContactForm({ initialRoute }: Props) {
             {TOUCH_POINTS.map(tp => {
               const open = openTouchPoint === tp.id;
               return (
-                <div key={tp.id} className="border-b border-neutral-800">
+                <div
+                  key={tp.id}
+                  className="border-b border-neutral-800"
+                  onMouseEnter={() => setOpenTouchPoint(tp.id)}
+                  onMouseLeave={() => setOpenTouchPoint(null)}
+                >
                   <button
                     type="button"
-                    onClick={() => setOpenTouchPoint(open ? null : tp.id)}
                     aria-expanded={open}
                     className="flex w-full items-center justify-between py-4 text-left group"
                   >
