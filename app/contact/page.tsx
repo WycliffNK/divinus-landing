@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import ContactForm from './ContactForm';
+import NewsletterForm from './NewsletterForm';
 import PageHeadlines from '../components/PageHeadlines';
 
 export const metadata = {
@@ -64,6 +65,27 @@ export default async function ContactPage({
       {/* ROUTING + FORM */}
       <section className="border-t border-neutral-800 py-20 sm:py-28" aria-label="Contact form">
         <ContactForm initialRoute={route} />
+      </section>
+
+      {/* NEWSLETTER STRIP */}
+      <section className="border-t border-neutral-800 py-16 sm:py-20" aria-label="Newsletter subscription">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="grid lg:grid-cols-12 gap-x-12 gap-y-8 items-center">
+            <div className="lg:col-span-6">
+              <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">Stay in the loop</p>
+              <h2 className="mt-4 text-[clamp(24px,3.5vw,44px)] font-bold display-tight text-neutral-50 text-balance">
+                Intelligence, delivered.<br />
+                <span className="text-neutral-500">No noise. No filler.</span>
+              </h2>
+              <p className="mt-4 text-sm leading-relaxed text-neutral-400 max-w-sm">
+                Divinus perspectives on capital, strategy, and the African growth story — straight to your inbox.
+              </p>
+            </div>
+            <div className="lg:col-span-6">
+              <NewsletterForm />
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* SLA NOTE — locked verbatim */}
