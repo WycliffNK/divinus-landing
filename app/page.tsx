@@ -45,7 +45,7 @@ export default function Home() {
             Divinus Investment Group · Global ambition, African conviction
           </p>
 
-          <h1 data-anim="headline" className="mt-8 max-w-[14ch] text-[clamp(44px,7.4vw,116px)] font-bold display-tight text-neutral-50 text-balance">
+          <h1 data-anim="headline" className="mt-8 max-w-[14ch] text-[clamp(36px,5.8vw,88px)] font-bold display-tight text-neutral-50 text-balance">
             <span data-anim-line className="block">Capital. Intelligence. Community.</span>
             <span data-anim-line className="block text-neutral-500">This is Divinus.</span>
           </h1>
