@@ -21,15 +21,6 @@ const NAV = [
 
 const SOCIALS = [
   {
-    label: 'LinkedIn',
-    href: 'https://www.linkedin.com/',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4" aria-hidden="true">
-        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-      </svg>
-    ),
-  },
-  {
     label: 'Instagram',
     href: 'https://www.instagram.com/divinus_investment_group?igsh=OHpibzQ1eWNtN2l5&utm_source=qr',
     icon: (
@@ -49,6 +40,25 @@ const SOCIALS = [
   },
 ];
 
+function SocialLinks({ className, linkClassName }: { className?: string; linkClassName: string }) {
+  return (
+    <div className={className}>
+      {SOCIALS.map(s => (
+        <a
+          key={s.label}
+          href={s.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={s.label}
+          className={linkClassName}
+        >
+          {s.icon}
+        </a>
+      ))}
+    </div>
+  );
+}
+
 export default function Footer() {
   return (
     <footer className="relative bg-black text-neutral-300 border-t border-neutral-900">
@@ -65,20 +75,10 @@ export default function Footer() {
             <p className="mt-6 text-sm text-neutral-400 italic">
               Built for Substance. Structured for Scale.
             </p>
-            <div className="mt-6 flex items-center gap-3">
-              {SOCIALS.map(s => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={s.label}
-                  className="text-neutral-500 hover:text-neutral-50 transition"
-                >
-                  {s.icon}
-                </a>
-              ))}
-            </div>
+            <SocialLinks
+              className="mt-6 flex items-center gap-3"
+              linkClassName="text-neutral-500 hover:text-neutral-50 transition"
+            />
             <p className="mt-8 text-xs text-neutral-600">© 2026 Divinus Investment Group</p>
           </div>
 
@@ -118,20 +118,10 @@ export default function Footer() {
 
         <div className="mt-16 pt-8 border-t border-neutral-900 flex flex-wrap items-center justify-between gap-4">
           <p className="text-xs font-mono text-neutral-600">divinus.com</p>
-          <div className="flex items-center gap-4">
-            {SOCIALS.map(s => (
-              <a
-                key={s.label}
-                href={s.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={s.label}
-                className="text-neutral-600 hover:text-neutral-300 transition"
-              >
-                {s.icon}
-              </a>
-            ))}
-          </div>
+          <SocialLinks
+            className="flex items-center gap-4"
+            linkClassName="text-neutral-600 hover:text-neutral-300 transition"
+          />
           <p className="text-xs text-neutral-600">All rights reserved · 2026</p>
         </div>
       </div>

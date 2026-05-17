@@ -1,35 +1,19 @@
 'use client';
 
+// TODO: replace with the client's WhatsApp number (digits only, country code first, no '+').
+// Until set, the button is hidden so we don't ship a dead link.
+const WHATSAPP_NUMBER = '';
+
 export default function WhatsAppButton() {
+  if (!WHATSAPP_NUMBER) return null;
+
   return (
     <a
-      href="https://wa.me/"
+      href={`https://wa.me/${WHATSAPP_NUMBER}`}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat on WhatsApp"
-      style={{
-        position: 'fixed',
-        bottom: '2rem',
-        right: '2rem',
-        zIndex: 9999,
-        width: '56px',
-        height: '56px',
-        borderRadius: '50%',
-        backgroundColor: '#25D366',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        boxShadow: '0 4px 24px rgba(37,211,102,0.35)',
-        transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-      }}
-      onMouseEnter={e => {
-        (e.currentTarget as HTMLAnchorElement).style.transform = 'scale(1.1)';
-        (e.currentTarget as HTMLAnchorElement).style.boxShadow = '0 6px 32px rgba(37,211,102,0.5)';
-      }}
-      onMouseLeave={e => {
-        (e.currentTarget as HTMLAnchorElement).style.transform = 'scale(1)';
-        (e.currentTarget as HTMLAnchorElement).style.boxShadow = '0 4px 24px rgba(37,211,102,0.35)';
-      }}
+      className="fixed bottom-8 right-8 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] shadow-[0_4px_24px_rgba(37,211,102,0.35)] transition-transform duration-200 hover:scale-110 hover:shadow-[0_6px_32px_rgba(37,211,102,0.5)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

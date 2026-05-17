@@ -154,12 +154,13 @@ export default function ContactForm({ initialRoute }: Props) {
                   key={tp.id}
                   className="border-b border-neutral-800"
                   onMouseEnter={() => setOpenTouchPoint(tp.id)}
-                  onMouseLeave={() => setOpenTouchPoint(null)}
                 >
                   <button
                     type="button"
                     aria-expanded={open}
-                    className="flex w-full items-center justify-between py-4 text-left group"
+                    aria-controls={`touch-point-${tp.id}`}
+                    onClick={() => setOpenTouchPoint(open ? null : tp.id)}
+                    className="flex w-full items-center justify-between py-4 text-left group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-500 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950 rounded-sm"
                   >
                     <dt className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500 group-hover:text-neutral-300 transition">
                       {tp.label}
@@ -172,7 +173,7 @@ export default function ContactForm({ initialRoute }: Props) {
                     </svg>
                   </button>
                   {open && (
-                    <dd className="pb-5 text-sm">
+                    <dd id={`touch-point-${tp.id}`} className="pb-5 text-sm">
                       {tp.content}
                     </dd>
                   )}
