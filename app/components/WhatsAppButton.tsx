@@ -1,15 +1,15 @@
 'use client';
 
 // TODO: replace with the client's WhatsApp number (digits only, country code first, no '+').
-// Until set, the button is hidden so we don't ship a dead link.
+// Until set, the link points to wa.me's landing page so the icon is still visible for review.
 const WHATSAPP_NUMBER = '';
 
 export default function WhatsAppButton() {
-  if (!WHATSAPP_NUMBER) return null;
+  const href = WHATSAPP_NUMBER ? `https://wa.me/${WHATSAPP_NUMBER}` : 'https://wa.me/';
 
   return (
     <a
-      href={`https://wa.me/${WHATSAPP_NUMBER}`}
+      href={href}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat on WhatsApp"

@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import ContactForm from './ContactForm';
-import NewsletterForm from './NewsletterForm';
+import ContactHeroCTAs from './ContactHeroCTAs';
+import NewsletterCard from '../components/NewsletterCard';
 import PageHeadlines from '../components/PageHeadlines';
 
 export const metadata = {
@@ -11,9 +12,10 @@ export const metadata = {
 export default async function ContactPage({
   searchParams,
 }: {
-  searchParams: Promise<{ route?: string }>;
+  searchParams: Promise<{ route?: string; mode?: string }>;
 }) {
-  const { route } = await searchParams;
+  const { route, mode } = await searchParams;
+  const initialMode = mode === 'call' ? 'call' : 'message';
 
   return (
     <main>
@@ -42,51 +44,16 @@ export default async function ContactPage({
             Tell us what you’re trying to do. We will follow up within two working days —
             from the right division, with the right person.
           </p>
-          <div className="mt-8 flex flex-wrap items-center gap-x-3 gap-y-3">
-            <a
-              href="#routing"
-              className="inline-flex items-center gap-2 rounded-full bg-neutral-50 px-5 py-3 text-sm font-semibold text-neutral-950 hover:bg-neutral-200 transition"
-            >
-              Pick a division
-              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3"/>
-              </svg>
-            </a>
-            <a
-              href="mailto:hello@divinus.com"
-              className="text-sm font-semibold text-neutral-200 underline decoration-neutral-700 underline-offset-[6px] hover:decoration-neutral-50 hover:text-neutral-50 transition"
-            >
-              Or email hello@divinus.com →
-            </a>
-          </div>
+          <ContactHeroCTAs />
         </div>
       </section>
 
       {/* ROUTING + FORM */}
       <section className="border-t border-neutral-800 py-20 sm:py-28" aria-label="Contact form">
-        <ContactForm initialRoute={route} />
+        <ContactForm initialRoute={route} initialMode={initialMode} />
       </section>
 
-      {/* NEWSLETTER STRIP */}
-      <section className="border-t border-neutral-800 py-16 sm:py-20" aria-label="Newsletter subscription">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid lg:grid-cols-12 gap-x-12 gap-y-8 items-center">
-            <div className="lg:col-span-6">
-              <p className="text-xs font-mono uppercase tracking-[0.18em] text-neutral-500">Stay in the loop</p>
-              <h2 className="mt-4 text-[clamp(24px,3.5vw,44px)] font-bold display-tight text-neutral-50 text-balance">
-                Intelligence, delivered.<br />
-                <span className="text-neutral-500">No noise. No filler.</span>
-              </h2>
-              <p className="mt-4 text-sm leading-relaxed text-neutral-400 max-w-sm">
-                Divinus perspectives on capital, strategy, and the African growth story — straight to your inbox.
-              </p>
-            </div>
-            <div className="lg:col-span-6">
-              <NewsletterForm />
-            </div>
-          </div>
-        </div>
-      </section>
+      <NewsletterCard titleId="newsletter-title" />
 
       {/* SLA NOTE — locked verbatim */}
       <section data-fx="gsap" data-section="sla" className="group relative overflow-hidden border-t border-neutral-800 py-20 sm:py-28" aria-labelledby="sla-title">
